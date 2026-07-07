@@ -339,8 +339,8 @@ final class ProjectStore: ObservableObject {
         switch editorMode {
         case .dkml:
             return [
-                "page", "view", "text", "image", "input", "textarea", "button", "card", "row", "column", "icon", "space", "selectable-card",
-                "class", "bindtap", "dk:if", "dk:for", "dk:key", "slot", "src", "placeholder", "name", "state-key", "value", "default", "default-text", "keyboard-type", "max-length", "data-id"
+                "page", "view", "text", "image", "input", "textarea", "button", "card", "row", "column", "icon", "space", "selectable-card", "tableview", "collectionview",
+                "class", "bindtap", "dk:if", "dk:for", "dk:item", "dk:index", "dk:key", "columns", "slot", "src", "placeholder", "name", "state-key", "value", "default", "default-text", "keyboard-type", "max-length", "data-id"
             ]
         case .dkss:
             return [

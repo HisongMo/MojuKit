@@ -12,5 +12,6 @@ xcuserdata/
 **/UserInterfaceState.xcuserstate
 StudioApp/Build/
 VSCodeExtension/dynamicpagekit-studio/node_modules/
-VSCodeExtension/dynamicpagekit-studio/out/
+VSCodeExtension/dynamicpagekit-studio/out/*
+!VSCodeExtension/dynamicpagekit-studio/out/extension.js
 *.vsix

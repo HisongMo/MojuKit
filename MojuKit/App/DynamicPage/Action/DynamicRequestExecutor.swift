@@ -19,7 +19,7 @@ final class DynamicRequestExecutor {
         self.templateResolver = DynamicTemplateResolver(dataStore: dataStore)
     }
 
-    func execute(request: DynamicRequest) async throws -> Any {
+    func execute(request: DynamicRequest, resolver: DynamicTemplateResolver? = nil) async throws -> Any {
         guard let endpoint = DynamicAPIRegistry.endpoint(for: request.apiKey) else {
             DynamicPageLogger.debug("unsupported apiKey: \(request.apiKey)")
             throw DynamicPageError.unsupportedAPI
@@ -37,7 +37,8 @@ final class DynamicRequestExecutor {
             throw DynamicPageError.tooManyConcurrentRequests
         }
 
-        let resolvedParams = templateResolver.resolveParams(request.params ?? [:])
+        let activeResolver = resolver ?? templateResolver
+        let resolvedParams = activeResolver.resolveParams(request.params ?? [:])
         let params = resolvedParams.mapValues { $0.anyValue }
 
         if endpoint.riskLevel == .confirmationRequired {

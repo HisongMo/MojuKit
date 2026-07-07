@@ -458,4 +458,56 @@ final class DKPageCompilerTests: XCTestCase {
         XCTAssertEqual(delayedActions[0].type, "navigate")
         XCTAssertEqual(delayedActions[0].target, "testPop")
     }
+
+
+    func testCompilesTableAndCollectionForLoops() throws {
+        let source = DKPageSource(
+            dkmlText: """
+            <page>
+              <tableview class="list" dk:for="{{cards}}" dk:item="card" dk:index="cardIndex">
+                <row>
+                  <text>{{cardIndex}}</text>
+                  <text>{{card.title}}</text>
+                </row>
+              </tableview>
+              <collectionview dk:for="items" dk:item="item" columns="3">
+                <text>{{item.name}}</text>
+              </collectionview>
+              <text dk:for="items" dk:item="item">{{item.name}}</text>
+            </page>
+            """,
+            dkssText: """
+            .list {
+              spacing: 12;
+            }
+            """,
+            jsText: "Page({ data: {}, methods: {} })",
+            configJSONText: "{}"
+        )
+
+        let page = try XCTUnwrap(DKPageCompiler.compile(source).page)
+        XCTAssertEqual(page.components.count, 3)
+
+        let table = page.components[0]
+        XCTAssertEqual(table.type, "tableView")
+        XCTAssertEqual(table.forEach, "{{cards}}")
+        XCTAssertEqual(table.forItem, "card")
+        XCTAssertEqual(table.forIndex, "cardIndex")
+        XCTAssertEqual(table.children?.first?.type, "row")
+        XCTAssertEqual(table.children?.first?.children?.last?.text, "{{card.title}}")
+        XCTAssertEqual(table.style?.spacing, 12)
+
+        let collection = page.components[1]
+        XCTAssertEqual(collection.type, "collectionView")
+        XCTAssertEqual(collection.forEach, "items")
+        XCTAssertEqual(collection.forItem, "item")
+        XCTAssertEqual(collection.columns, 3)
+        XCTAssertEqual(collection.children?.first?.text, "{{item.name}}")
+
+        let repeatedText = page.components[2]
+        XCTAssertEqual(repeatedText.type, "text")
+        XCTAssertEqual(repeatedText.forEach, "items")
+        XCTAssertEqual(repeatedText.forItem, "item")
+    }
+
 }

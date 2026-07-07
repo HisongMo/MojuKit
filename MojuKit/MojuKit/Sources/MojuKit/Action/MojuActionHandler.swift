@@ -19,11 +19,12 @@ final class MojuActionHandler {
         self.templateResolver = MojuTemplateResolver(dataStore: dataStore)
     }
 
-    func handle(_ action: MojuAction) async {
+    func handle(_ action: MojuAction, resolver: MojuTemplateResolver? = nil) async {
+        let activeResolver = resolver ?? self.templateResolver
         switch action.type {
         case "sequence":
             for childAction in action.actions ?? [] {
-                await handle(childAction)
+                await handle(childAction, resolver: activeResolver)
             }
 
         case "delay":
@@ -32,53 +33,53 @@ final class MojuActionHandler {
                 try? await Task.sleep(nanoseconds: UInt64(milliseconds) * 1_000_000)
             }
             for childAction in action.actions ?? [] {
-                await handle(childAction)
+                await handle(childAction, resolver: activeResolver)
             }
 
         case "navigate":
             guard let target = action.target else { return }
-            let params = action.params.map { templateResolver.resolveParams($0) }
+            let params = action.params.map { activeResolver.resolveParams($0) }
             onNavigate?(target, params)
 
         case "nativeNavigate":
             guard let target = action.target else { return }
-            let params = action.params.map { templateResolver.resolveParams($0) }
+            let params = action.params.map { activeResolver.resolveParams($0) }
             onNativeNavigate?(target, params)
 
         case "openUrl":
             guard let rawURL = action.url else { return }
-            openURL(templateResolver.resolveString(rawURL))
+            openURL(activeResolver.resolveString(rawURL))
 
         case "toast":
-            let message = action.message.map { templateResolver.resolveString($0) } ?? ""
+            let message = action.message.map { activeResolver.resolveString($0) } ?? ""
             showToast(message)
 
         case "request":
             guard let request = action.request else { return }
             do {
-                _ = try await requestExecutor.execute(request: request)
+                _ = try await requestExecutor.execute(request: request, resolver: activeResolver)
                 if let successAction = request.successAction {
-                    await handle(successAction)
+                    await handle(successAction, resolver: activeResolver)
                 }
             } catch {
                 if let failureAction = request.failureAction {
-                    await handle(failureAction)
+                    await handle(failureAction, resolver: activeResolver)
                 }
             }
 
         case "track":
             guard let eventName = action.trackEvent else { return }
-            let params = action.params.map { templateResolver.resolveParams($0) }
+            let params = action.params.map { activeResolver.resolveParams($0) }
             onTrackEvent?(eventName, params)
 
         case "setState":
             guard let stateKey = action.stateKey, let value = action.value else { return }
-            dataStore.set(templateResolver.resolveValue(value).anyValue, forKey: stateKey)
+            dataStore.set(activeResolver.resolveValue(value).anyValue, forKey: stateKey)
             onStateChanged?()
 
         case "showModal":
             guard let target = action.target else { return }
-            let params = action.params.map { templateResolver.resolveParams($0) }
+            let params = action.params.map { activeResolver.resolveParams($0) }
             onShowModal?(target, params)
 
         default:

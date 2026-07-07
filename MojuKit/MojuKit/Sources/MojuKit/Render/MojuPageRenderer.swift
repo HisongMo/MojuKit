@@ -30,7 +30,7 @@ final class MojuPageRenderer {
 
     func render() {
         cleanup()
-        renderComponents(components, into: stackView, depth: 1)
+        renderComponents(components, into: stackView, depth: 1, resolver: nil)
         MojuPageLogger.debug("page loaded")
     }
 
@@ -43,32 +43,109 @@ final class MojuPageRenderer {
         }
     }
 
-    private func renderComponents(_ components: [MojuComponent], into stackView: UIStackView, depth: Int) {
+    private func renderComponents(
+        _ components: [MojuComponent],
+        into stackView: UIStackView,
+        depth: Int,
+        resolver inheritedResolver: MojuTemplateResolver?
+    ) {
         guard depth <= MojuPageLimits.maxRecursionDepth else {
             MojuPageLogger.debug("recursion too deep")
             return
         }
 
-        let resolver = MojuTemplateResolver(dataStore: dataStore)
-        let context = MojuRenderContext(
+        let resolver = inheritedResolver ?? MojuTemplateResolver(dataStore: dataStore)
+
+        for component in components {
+            MojuPageLogger.debug("render component: \(component.type)")
+            if shouldExpandLoop(for: component) {
+                renderLoopedComponent(component, into: stackView, depth: depth, resolver: resolver)
+            } else {
+                renderSingleComponent(component, into: stackView, depth: depth, resolver: resolver)
+            }
+        }
+    }
+
+    private func renderSingleComponent(
+        _ component: MojuComponent,
+        into stackView: UIStackView,
+        depth: Int,
+        resolver: MojuTemplateResolver
+    ) {
+        let context = makeContext(resolver: resolver)
+        if let view = factory.makeView(from: component, context: context, depth: depth) {
+            stackView.addArrangedSubview(view)
+        }
+    }
+
+    private func renderLoopedComponent(
+        _ component: MojuComponent,
+        into stackView: UIStackView,
+        depth: Int,
+        resolver: MojuTemplateResolver
+    ) {
+        let items = resolver.resolveArray(component.forEach)
+        guard !items.isEmpty else { return }
+        let itemName = component.forItem?.isEmpty == false ? component.forItem! : "item"
+        let indexName = component.forIndex?.isEmpty == false ? component.forIndex! : "index"
+        let looplessComponent = component.withoutLoop()
+
+        for (index, item) in items.enumerated() {
+            let localResolver = resolver.withLocalValues([
+                itemName: item,
+                indexName: .int(index)
+            ])
+            renderSingleComponent(looplessComponent, into: stackView, depth: depth, resolver: localResolver)
+        }
+    }
+
+    private func makeContext(resolver: MojuTemplateResolver) -> MojuRenderContext {
+        MojuRenderContext(
             dataStore: dataStore,
             templateResolver: resolver,
             styleParser: styleParser,
             actionHandler: actionHandler,
             imageProvider: imageProvider,
-            renderChildren: { [weak self] children, childStackView, childDepth in
-                self?.renderComponents(children, into: childStackView, depth: childDepth)
+            renderChildren: { [weak self] children, childStackView, childDepth, childResolver in
+                self?.renderComponents(children, into: childStackView, depth: childDepth, resolver: childResolver ?? resolver)
             },
             registerImageTask: { [weak self] task in
                 self?.imageTasks.append(task)
             }
         )
+    }
 
-        for component in components {
-            MojuPageLogger.debug("render component: \(component.type)")
-            if let view = factory.makeView(from: component, context: context, depth: depth) {
-                stackView.addArrangedSubview(view)
-            }
-        }
+    private func shouldExpandLoop(for component: MojuComponent) -> Bool {
+        guard component.forEach?.isEmpty == false else { return false }
+        return MojuComponentType(rawValue: component.type) != .tableView &&
+            MojuComponentType(rawValue: component.type) != .collectionView
+    }
+}
+
+private extension MojuComponent {
+    func withoutLoop() -> MojuComponent {
+        MojuComponent(
+            id: id,
+            type: type,
+            text: text,
+            defaultText: defaultText,
+            placeholder: placeholder,
+            imageUrl: imageUrl,
+            placeholderImage: placeholderImage,
+            iconName: iconName,
+            keyboardType: keyboardType,
+            maxLength: maxLength,
+            style: style,
+            selectedStyle: selectedStyle,
+            action: action,
+            children: children,
+            visible: visible,
+            stateKey: stateKey,
+            value: value,
+            forEach: nil,
+            forItem: nil,
+            forIndex: nil,
+            columns: columns
+        )
     }
 }

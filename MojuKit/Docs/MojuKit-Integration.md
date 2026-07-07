@@ -1,40 +1,32 @@
 # MojuKit 接入文档
 
-MojuKit 是一个面向 iOS App 的 UIKit 动态页面运行时 SDK。它消费已经编译好的 runtime JSON，负责解析、校验、渲染原生页面，并把网络请求、路由、埋点、弹窗等业务行为回调给接入方。
+MojuKit 是一个面向 iOS App 的 UIKit 动态页面运行时 SDK。它负责解析页面数据、校验 schema、渲染原生界面，并把网络、路由、埋点、弹窗等业务行为回调给接入方。
 
-MojuKit 第一版不包含编辑器、VS Code 插件、DKML 编译器、Preview Host，也不内置后台远程拉取客户端。
+本文只讲“怎么接”，组件、动作、样式、循环、列表等能力细节请看 [MojuKit 能力支持列表](./MojuKit-Capability-Support.md)。
 
 当前源码包最低支持 iOS 15。
 
 ## 安装
 
-### 本地 Swift Package
-
-在 Xcode 中选择：
-
-```text
-File -> Add Package Dependencies...
-```
-
-选择本地路径：
+本地 Swift Package 路径：
 
 ```text
 /Users/wangleihaoshuaio/Developer/Demo/MojuKit/MojuKit
 ```
 
-然后在业务 target 中添加 product：
-
-```text
-MojuKit
-```
-
-业务代码中引入：
+在 Xcode 中添加本地 package 后，把 `MojuKit` 加到业务 target，代码中引入：
 
 ```swift
 import MojuKit
 ```
 
-## 打开本地 JSON 页面
+## 最小接入
+
+业务侧最少需要准备三件事：
+
+1. 一份页面 JSON 或 `.dpk` 包解码出来的 `MojuPage`
+2. 一个网络适配器，实现 `MojuNetworkProviding`
+3. 一个页面容器，创建 `MojuPageViewController`
 
 ```swift
 import UIKit
@@ -42,23 +34,24 @@ import MojuKit
 
 final class AppNetworkProvider: MojuNetworkProviding {
     func request(apiKey: String, params: [String: Any]) async throws -> Any {
-        // 由业务 App 按 apiKey 路由到真实接口。
+        // 由业务 App 把 apiKey 映射到真实接口。
         return ["success": true]
     }
 }
 
 final class AppImageProvider: MojuImageProviding {
     func image(named name: String) -> UIImage? {
-        // 如果业务 App 有自己的图片体系，可以在这里接入。
-        UIImage(named: name)
+        // 如果业务有自己的图片封装，在这里接入。
+        BaseImage(named: name)?.image
     }
 
     func systemImage(named name: String) -> UIImage? {
+        // 系统 SF Symbols 继续保留。
         UIImage(systemName: name)
     }
 }
 
-func openMojuPage(jsonData: Data, navigationController: UINavigationController) {
+func openPage(jsonData: Data, navigationController: UINavigationController) {
     do {
         let page = try MojuSchemaValidator.decodePage(from: jsonData)
         let viewController = MojuPageViewController(
@@ -68,15 +61,15 @@ func openMojuPage(jsonData: Data, navigationController: UINavigationController) 
         )
 
         viewController.onNavigate = { target, params in
-            // target 可以是另一个 runtime JSON 页面 ID。
+            // 加载 target 对应的页面 JSON，再 push 一个新的 MojuPageViewController。
         }
 
         viewController.onNativeNavigate = { target, params in
-            // target 可以映射到业务原生页面。
+            // 映射到业务原生页面。
         }
 
         viewController.onShowModal = { target, params in
-            // target 可以映射到一个 modal runtime JSON。
+            // 映射到业务弹窗或动态弹窗容器。
         }
 
         viewController.onTrackEvent = { eventName, params in
@@ -84,133 +77,136 @@ func openMojuPage(jsonData: Data, navigationController: UINavigationController) 
         }
 
         viewController.onConfirmHighRiskRequest = { apiKey, params, completion in
-            // 高风险请求确认。确认后调用 completion(true)。
+            // 高风险请求由业务侧确认后再继续。
             completion(true)
         }
 
         navigationController.pushViewController(viewController, animated: true)
     } catch {
-        // JSON 无效、schema 不支持、组件过深等错误会在这里抛出。
+        // JSON 无效、schema 不支持、组件过深等错误都会在这里抛出。
     }
 }
 ```
 
-如果业务 App 没有自定义图片体系，可以省略 `imageProvider`，MojuKit 会默认使用 `UIImage(named:)` 和 `UIImage(systemName:)`。
+如果业务没有自定义图片体系，可以不传 `imageProvider`，MojuKit 会使用默认的 `UIImage(named:)` 和 `UIImage(systemName:)`。
 
-## 业务需要实现的能力
+## 图片接入
 
-### 网络请求
+MojuKit 不假设业务 App 的图片加载方式。`MojuImageProviding` 主要负责两件事：
 
-MojuKit 不直接访问业务接口。页面 JSON 中的 request action 会调用：
-
-```swift
-func request(apiKey: String, params: [String: Any]) async throws -> Any
-```
-
-业务 App 根据 `apiKey` 分发到真实接口，并返回可以被 JSON 序列化的数据结构，例如：
+1. 普通图片名查找
+2. 系统图标名查找
 
 ```swift
-return [
-    "cardId": "card_10001",
-    "status": "success"
-]
-```
+final class AppImageProvider: MojuImageProviding {
+    func image(named name: String) -> UIImage? {
+        BaseImage(named: name)?.image
+    }
 
-如果接口没有返回值，可以返回：
-
-```swift
-return [:]
-```
-
-### 动态页跳转
-
-当 JSON 触发：
-
-```json
-{ "type": "navigate", "target": "ETCDetail" }
-```
-
-SDK 会回调：
-
-```swift
-viewController.onNavigate = { target, params in
-    // 业务侧加载 target 对应 JSON，再 push 新的 MojuPageViewController。
+    func systemImage(named name: String) -> UIImage? {
+        UIImage(systemName: name)
+    }
 }
 ```
 
-一个 `MojuPageViewController` 类可以承载多个页面。每次跳转创建一个新的 `MojuPageViewController` 实例即可。
+适用场景：
 
-### 跳转原生页面
+- `image` 组件的占位图 `placeholderImage`
+- `icon` 组件的 `iconName`
+- 业务自己的图片资源命名体系
 
-当 JSON 触发：
+## 网络接入
 
-```json
-{ "type": "nativeNavigate", "target": "NativeTest" }
-```
-
-SDK 会回调：
+MojuKit 不直接请求业务接口，只定义协议：
 
 ```swift
-viewController.onNativeNavigate = { target, params in
-    // 业务 App 自己打开原生 UIViewController。
+public protocol MojuNetworkProviding {
+    func request(apiKey: String, params: [String: Any]) async throws -> Any
 }
 ```
 
-### 弹窗
+接入建议：
 
-当 JSON 触发：
+- `apiKey` 只表示业务允许的能力名，不要在 JSON 里写完整 URL
+- Token、签名、公共参数、设备参数由业务网络层统一注入
+- 返回值建议是 `Dictionary`、`Array`、`String`、`Int`、`Bool` 这类可序列化对象
 
-```json
-{ "type": "showModal", "target": "confirm_bind_card_modal" }
-```
+## 路由与埋点回调
 
-SDK 会回调：
+MojuKit 把页面层行为回调给业务 App，由业务决定是否跳转、怎么跳转、跳到哪里。
+
+- `onNavigate`：动态页跳转
+- `onNativeNavigate`：原生页面跳转
+- `onShowModal`：弹窗或模态页
+- `onTrackEvent`：埋点
+- `onConfirmHighRiskRequest`：高风险请求确认
+
+这几个回调都挂在 `MojuPageViewController` 上，创建后直接赋值即可。
+
+## JSON 和 DPK
+
+本地调试可以直接解 JSON：
 
 ```swift
-viewController.onShowModal = { target, params in
-    // 业务侧加载 modal JSON 并用自定义容器展示。
+let page = try MojuSchemaValidator.decodePage(from: jsonData)
+```
+
+线上包可以用 `.dpk` 解码：
+
+```swift
+let package = try MojuDPKDecoder.decodePackage(
+    from: data,
+    secret: Data("your-app-secret".utf8)
+)
+
+if let page = package.activePage {
+    let vc = MojuPageViewController(
+        page: page,
+        networkProvider: AppNetworkProvider(),
+        imageProvider: AppImageProvider()
+    )
 }
 ```
 
-## Runtime JSON 包结构
+如果需要按名字或 `pageId` 取指定页面：
 
-VS Code 插件打包后会生成只包含 runtime JSON 的目录：
+```swift
+let page = try MojuDPKDecoder.decodePage(
+    named: "ETCList",
+    from: data,
+    secret: Data("your-app-secret".utf8)
+)
+```
+
+`MojuDPKPackage` 还会带出发布信息：
+
+- `releaseTitle`
+- `releaseDescription`
+- `generatedAt`
+
+解码失败会区分格式错误、版本不支持、密钥错误、解密失败、manifest 缺失和页面不存在。密钥不要硬编码进 SDK，应该由业务 App 持有，并与插件侧配置保持一致。
+
+## 预览工程
+
+仓库内的预览宿主工程是：
 
 ```text
-DynamicPageKitRuntimeJSON/
-├── manifest.json
-├── ETCList.json
-└── ETCDetail.json
+MojuKit/MojuKitPreview.xcodeproj
 ```
 
-`manifest.json` 示例：
+对应 scheme 和 app 名称都是 `MojuKitPreview`。VS Code 插件和预览启动流程会用这份工程来跑模拟器预览。
 
-```json
-{
-  "name": "DynamicPageKitRuntimeJSON",
-  "generatedAt": "2026-07-06T00:00:00.000Z",
-  "sourceProject": "/path/to/project",
-  "activePage": "ETCList",
-  "pages": [
-    {
-      "name": "ETCList",
-      "pageId": "etc_list",
-      "file": "ETCList.json"
-    }
-  ]
-}
-```
+## 页面入口约束
 
-MojuKit 第一版不负责拉取后台接口。业务 App 可以自己从后台下载 `manifest.json` 和页面 JSON，然后调用：
+`MojuPage` 需要满足这些基础约束：
 
-```swift
-let page = try MojuSchemaValidator.decodePage(from: data)
-```
+- `schemaVersion` 当前主版本是 `1`
+- `components` 不能为空
+- 页面总组件数和层级有上限
+- 未知组件、未知动作、非法 JSON 都会被判为错误
 
-## 当前限制
+## 现在你需要记住的只有这些
 
-- 不执行任意 JavaScript。
-- 不内置远程下发客户端。
-- 不包含 Studio、VS Code 插件、CLI、Preview Host。
-- 不内置业务接口实现，所有请求必须由接入 App 的 `MojuNetworkProviding` 提供。
-- 当前组件和布局能力以 runtime JSON 支持范围为准，不等同完整 H5/CSS。
+1. App 负责网络、图片、路由、埋点和风控确认
+2. MojuKit 负责解析、渲染、模板绑定和动作分发
+3. 组件、动作、样式和循环细节都在 [MojuKit 能力支持列表](./MojuKit-Capability-Support.md)

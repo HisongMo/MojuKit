@@ -53,6 +53,10 @@ struct DynamicComponent: Codable {
     let visible: DynamicValue?
     let stateKey: String?
     let value: DynamicValue?
+    let forEach: String?
+    let forItem: String?
+    let forIndex: String?
+    let columns: Int?
 
     init(
         id: String? = nil,
@@ -71,7 +75,11 @@ struct DynamicComponent: Codable {
         children: [DynamicComponent]? = nil,
         visible: DynamicValue? = nil,
         stateKey: String? = nil,
-        value: DynamicValue? = nil
+        value: DynamicValue? = nil,
+        forEach: String? = nil,
+        forItem: String? = nil,
+        forIndex: String? = nil,
+        columns: Int? = nil
     ) {
         self.id = id
         self.type = type
@@ -90,6 +98,10 @@ struct DynamicComponent: Codable {
         self.visible = visible
         self.stateKey = stateKey
         self.value = value
+        self.forEach = forEach
+        self.forItem = forItem
+        self.forIndex = forIndex
+        self.columns = columns
     }
 }
 
@@ -132,6 +144,8 @@ enum DynamicComponentType: String {
     case row
     case icon
     case selectableCard
+    case tableView
+    case collectionView
 }
 
 extension DynamicStyle {

@@ -3,9 +3,19 @@ import Foundation
 @MainActor
 final class DynamicTemplateResolver {
     private let dataStore: DynamicDataStore
+    private let locals: [String: DynamicValue]
 
-    init(dataStore: DynamicDataStore) {
+    init(dataStore: DynamicDataStore, locals: [String: DynamicValue] = [:]) {
         self.dataStore = dataStore
+        self.locals = locals
+    }
+
+    func withLocalValues(_ newLocals: [String: DynamicValue]) -> DynamicTemplateResolver {
+        var merged = locals
+        for (k, v) in newLocals {
+            merged[k] = v
+        }
+        return DynamicTemplateResolver(dataStore: dataStore, locals: merged)
     }
 
     func resolveString(_ template: String) -> String {
@@ -31,13 +41,29 @@ final class DynamicTemplateResolver {
             if keyPath.contains("+") || keyPath.contains("-") || keyPath.contains("*") || keyPath.contains("/") {
                 resolvedValue = evaluateExpression(keyPath)
             } else {
-                resolvedValue = dataStore.value(forKeyPath: keyPath)
+                resolvedValue = value(forKeyPath: keyPath)
             }
             let replacement = string(from: resolvedValue)
             result.replaceSubrange(fullRange, with: replacement)
         }
 
         return result
+    }
+
+    func resolveArray(_ expression: String?) -> [DynamicValue] {
+        guard let expression else { return [] }
+        let keyPath = unwrappedTemplateExpression(expression)
+        switch value(forKeyPath: keyPath) {
+        case let value as DynamicValue:
+            if case .array(let array) = value { return array }
+            return []
+        case let array as [DynamicValue]:
+            return array
+        case let array as [Any]:
+            return array.map(DynamicValue.fromAny)
+        default:
+            return []
+        }
     }
 
     private func evaluateExpression(_ expressionString: String) -> Any? {
@@ -54,7 +80,7 @@ final class DynamicTemplateResolver {
             guard let range = Range(match.range(at: 0), in: resolvedString) else { continue }
             let varName = String(resolvedString[range])
             
-            if let val = dataStore.value(forKeyPath: varName) {
+            if let val = value(forKeyPath: varName) {
                 let valStr: String
                 if let d = val as? Double {
                     valStr = String(d)
@@ -89,6 +115,43 @@ final class DynamicTemplateResolver {
 
     func resolveParams(_ params: [String: DynamicValue]) -> [String: DynamicValue] {
         params.mapValues { resolveValue($0) }
+    }
+
+    private func value(forKeyPath keyPath: String) -> Any? {
+        let parts = keyPath
+            .split(separator: ".")
+            .map(String.init)
+            .filter { !$0.isEmpty }
+        guard let first = parts.first else { return nil }
+
+        if let localValue = locals[first] {
+            return value(localValue, at: Array(parts.dropFirst()))
+        }
+
+        return dataStore.value(forKeyPath: keyPath)
+    }
+
+    private func value(_ value: DynamicValue, at path: [String]) -> Any? {
+        guard let head = path.first else { return value.anyValue }
+        switch value {
+        case .object(let object):
+            guard let next = object[head] else { return nil }
+            return self.value(next, at: Array(path.dropFirst()))
+        case .array(let array):
+            guard let index = Int(head), array.indices.contains(index) else { return nil }
+            return self.value(array[index], at: Array(path.dropFirst()))
+        default:
+            return nil
+        }
+    }
+
+    private func unwrappedTemplateExpression(_ expression: String) -> String {
+        let trimmed = expression.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmed.hasPrefix("{{"), trimmed.hasSuffix("}}") else { return trimmed }
+        return trimmed
+            .dropFirst(2)
+            .dropLast(2)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     private func string(from value: Any?) -> String {

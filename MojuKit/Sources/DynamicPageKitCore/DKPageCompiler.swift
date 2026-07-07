@@ -249,6 +249,10 @@ public enum DKPageCompiler {
             action = nil
         }
         let visible = node.attributes["dk:if"].map { DynamicValue.string($0) }
+        let forEach = node.attributes["dk:for"] ?? node.attributes["for-each"] ?? node.attributes["forEach"]
+        let forItem = node.attributes["dk:item"] ?? node.attributes["for-item"] ?? node.attributes["forItem"]
+        let forIndex = node.attributes["dk:index"] ?? node.attributes["for-index"] ?? node.attributes["forIndex"]
+        let columns = (node.attributes["columns"] ?? node.attributes["column-count"] ?? node.attributes["columnCount"]).flatMap(Int.init)
         let children = node.children.compactMap {
             compileNode($0, styleSheet: styleSheet, methods: methods, diagnostics: &diagnostics)
         }
@@ -257,11 +261,11 @@ public enum DKPageCompiler {
         case "page":
             return nil
         case "view":
-            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible)
+            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "text":
-            return DynamicComponent(type: "text", text: node.textContent, style: style, action: action, visible: visible)
+            return DynamicComponent(type: "text", text: node.textContent, style: style, action: action, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "image":
-            return DynamicComponent(type: "image", imageUrl: node.attributes["src"], placeholderImage: node.attributes["placeholder"], style: style, action: action, visible: visible)
+            return DynamicComponent(type: "image", imageUrl: node.attributes["src"], placeholderImage: node.attributes["placeholder"], style: style, action: action, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "input":
             return DynamicComponent(
                 type: "input",
@@ -273,7 +277,11 @@ public enum DKPageCompiler {
                 style: style,
                 action: action,
                 visible: visible,
-                stateKey: node.attributes["state-key"]
+                stateKey: node.attributes["state-key"],
+                forEach: forEach,
+                forItem: forItem,
+                forIndex: forIndex,
+                columns: columns
             )
         case "textarea":
             return DynamicComponent(
@@ -286,21 +294,29 @@ public enum DKPageCompiler {
                 style: style,
                 action: action,
                 visible: visible,
-                stateKey: node.attributes["state-key"]
+                stateKey: node.attributes["state-key"],
+                forEach: forEach,
+                forItem: forItem,
+                forIndex: forIndex,
+                columns: columns
             )
         case "button":
-            return DynamicComponent(type: "button", text: node.textContent, style: style, action: action, visible: visible)
+            return DynamicComponent(type: "button", text: node.textContent, style: style, action: action, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "card":
-            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible)
+            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "row":
-            return DynamicComponent(type: "row", style: style, action: action, children: children, visible: visible)
+            return DynamicComponent(type: "row", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "column":
-            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible)
+            return DynamicComponent(type: "card", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "icon":
             let iconName = node.attributes["name"] ?? node.attributes["icon"]
-            return DynamicComponent(type: "icon", iconName: iconName, style: style, action: action, visible: visible)
+            return DynamicComponent(type: "icon", iconName: iconName, style: style, action: action, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "space":
-            return DynamicComponent(type: "space", style: style, visible: visible)
+            return DynamicComponent(type: "space", style: style, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
+        case "tableview", "table-view":
+            return DynamicComponent(type: "tableView", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
+        case "collectionview", "collection-view":
+            return DynamicComponent(type: "collectionView", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "selectable-card":
             return DynamicComponent(
                 type: "selectableCard",
@@ -309,10 +325,14 @@ public enum DKPageCompiler {
                 children: children,
                 visible: visible,
                 stateKey: node.attributes["state-key"],
-                value: node.attributes["value"].map(DynamicValue.string)
+                value: node.attributes["value"].map(DynamicValue.string),
+                forEach: forEach,
+                forItem: forItem,
+                forIndex: forIndex,
+                columns: columns
             )
         default:
-            return DynamicComponent(type: "text", text: "Unsupported DKML tag: \(node.name)", style: style)
+            return DynamicComponent(type: "text", text: "Unsupported DKML tag: \(node.name)", style: style, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         }
     }
 

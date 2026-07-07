@@ -94,7 +94,7 @@
       },
       {
         "command": "dynamicPageKit.exportJSONPackage",
-        "title": "DynamicPageKit: Export Runtime JSON Package",
+        "title": "DynamicPageKit: Export DPK Package",
         "icon": "$(package)"
       },
       {
@@ -126,7 +126,7 @@
         "dynamicPageKit.hostProjectPath": {
           "type": "string",
           "default": "",
-          "description": "Path to the MojuKit project containing MojuKit.xcodeproj. Defaults to the current workspace if present."
+          "description": "Path to the MojuKitPreview project containing MojuKitPreview.xcodeproj. Defaults to the current workspace if present."
         },
         "dynamicPageKit.previewPort": {
           "type": "number",
@@ -157,6 +157,11 @@
           "type": "string",
           "default": "",
           "description": "Optional operator name recorded on uploaded DynamicPageKit versions."
+        },
+        "dynamicPageKit.dpkSecret": {
+          "type": "string",
+          "default": "",
+          "description": "Secret used to encrypt exported .dpk packages. The iOS app must use the same secret to decode."
         }
       }
     },

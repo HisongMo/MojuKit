@@ -56,7 +56,7 @@
 		0A0000062C37100100000001 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A0000082C37100100000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A0000092C37100100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A00000A2C37100100000001 /* MojuKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MojuKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A00000A2C37100100000001 /* MojuKitPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MojuKitPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B0001012C37100100000001 /* DynamicPage/Model/DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicValue.swift; sourceTree = "<group>"; };
 		0B0001022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicRequestModel.swift; sourceTree = "<group>"; };
 		0B0001032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicPageModel.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		0A00000E2C37100100000001 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A00000A2C37100100000001 /* MojuKit.app */,
+				0A00000A2C37100100000001 /* MojuKitPreview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,9 +183,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0A00000F2C37100100000001 /* MojuKit */ = {
+		0A00000F2C37100100000001 /* MojuKitPreview */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKit" */;
+			buildConfigurationList = 0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKitPreview" */;
 			buildPhases = (
 				0A0000112C37100100000001 /* Sources */,
 				0A00000B2C37100100000001 /* Frameworks */,
@@ -195,9 +195,9 @@
 			);
 			dependencies = (
 			);
-			name = MojuKit;
-			productName = MojuKit;
-			productReference = 0A00000A2C37100100000001 /* MojuKit.app */;
+			name = MojuKitPreview;
+			productName = MojuKitPreview;
+			productReference = 0A00000A2C37100100000001 /* MojuKitPreview.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -215,7 +215,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKit" */;
+			buildConfigurationList = 0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKitPreview" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -228,7 +228,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0A00000F2C37100100000001 /* MojuKit */,
+				0A00000F2C37100100000001 /* MojuKitPreview */,
 			);
 		};
 /* End PBXProject section */
@@ -427,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKitPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -452,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKitPreview;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -463,7 +463,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKit" */ = {
+		0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKitPreview" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A0000172C37100100000001 /* Debug */,
@@ -472,7 +472,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKit" */ = {
+		0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKitPreview" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A0000152C37100100000001 /* Debug */,

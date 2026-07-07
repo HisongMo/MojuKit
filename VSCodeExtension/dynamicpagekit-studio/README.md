@@ -9,7 +9,7 @@ Internal VS Code extension for editing DynamicPageKit page projects.
 - Completion and basic TextMate highlighting for DKML/DKSS/DynamicPage JS.
 - Formatting through `DynamicPageKitCLI`.
 - Problems diagnostics from the shared Swift `DynamicPageKitCore` compiler.
-- Local preview server compatible with the existing iOS Preview Host:
+- Local preview server compatible with the existing iOS MojuKitPreview:
   - `GET /active-page.json`
   - `GET /events`
   - `GET /manifest.json`
@@ -28,7 +28,7 @@ npm run compile
 
 ## Settings
 
-- `dynamicPageKit.hostProjectPath`: path to the `MojuKit` project containing `Package.swift` and `MojuKit.xcodeproj`.
+- `dynamicPageKit.hostProjectPath`: path to the `MojuKitPreview` project containing `Package.swift` and `MojuKitPreview.xcodeproj`.
 - `dynamicPageKit.previewPort`: local preview server port, default `8088`.
 
 ## Commands

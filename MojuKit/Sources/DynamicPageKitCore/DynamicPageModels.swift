@@ -105,6 +105,10 @@ public struct DynamicComponent: Codable, Equatable {
     public let visible: DynamicValue?
     public let stateKey: String?
     public let value: DynamicValue?
+    public let forEach: String?
+    public let forItem: String?
+    public let forIndex: String?
+    public let columns: Int?
 
     public init(
         id: String? = nil,
@@ -123,7 +127,11 @@ public struct DynamicComponent: Codable, Equatable {
         children: [DynamicComponent]? = nil,
         visible: DynamicValue? = nil,
         stateKey: String? = nil,
-        value: DynamicValue? = nil
+        value: DynamicValue? = nil,
+        forEach: String? = nil,
+        forItem: String? = nil,
+        forIndex: String? = nil,
+        columns: Int? = nil
     ) {
         self.id = id
         self.type = type
@@ -142,6 +150,10 @@ public struct DynamicComponent: Codable, Equatable {
         self.visible = visible
         self.stateKey = stateKey
         self.value = value
+        self.forEach = forEach
+        self.forItem = forItem
+        self.forIndex = forIndex
+        self.columns = columns
     }
 }
 

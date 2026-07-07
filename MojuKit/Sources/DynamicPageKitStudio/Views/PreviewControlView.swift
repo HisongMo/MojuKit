@@ -22,7 +22,7 @@ struct PreviewControlView: View {
         VStack(alignment: .leading, spacing: 8) {
             Label("iPhone Simulator Preview", systemImage: "iphone")
                 .font(.headline)
-            Text("Studio 编译并发布 runtime JSON，真实 UIKit 页面由 iPhone Simulator 中的 Preview Host 渲染。")
+            Text("Studio 编译并发布 runtime JSON，真实 UIKit 页面由 iPhone Simulator 中的 MojuKitPreview 渲染。")
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)

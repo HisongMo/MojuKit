@@ -44,6 +44,10 @@ final class MojuComponentFactory {
             contentView = makeIcon(component, context: context)
         case .selectableCard:
             contentView = makeSelectableCard(component, context: context, depth: depth)
+        case .tableView:
+            contentView = makeTableView(component, context: context, depth: depth)
+        case .collectionView:
+            contentView = makeCollectionView(component, context: context, depth: depth)
         case nil:
             MojuPageLogger.debug("unsupported component: \(component.type)")
             #if DEBUG
@@ -56,7 +60,7 @@ final class MojuComponentFactory {
         guard let contentView else { return nil }
         let isContainer: Bool
         switch MojuComponentType(rawValue: component.type) {
-        case .card, .row, .selectableCard: isContainer = true
+        case .card, .row, .selectableCard, .tableView, .collectionView: isContainer = true
         default: isContainer = false
         }
         let wrappedView = wrap(contentView, style: effectiveStyle, parser: context.styleParser, isContainer: isContainer)
@@ -239,7 +243,7 @@ final class MojuComponentFactory {
         stackView.spacing = component.style?.spacing ?? 0
         stackView.alignment = context.styleParser.stackAlignment(from: component.style?.stackAlignment)
         stackView.distribution = context.styleParser.stackDistribution(from: component.style?.distribution)
-        context.renderChildren(component.children ?? [], stackView, depth + 1)
+        context.renderChildren(component.children ?? [], stackView, depth + 1, nil)
         return stackView
     }
 
@@ -249,7 +253,7 @@ final class MojuComponentFactory {
         stackView.spacing = component.style?.spacing ?? 8
         stackView.alignment = context.styleParser.stackAlignment(from: component.style?.stackAlignment ?? "center")
         stackView.distribution = context.styleParser.stackDistribution(from: component.style?.distribution)
-        context.renderChildren(component.children ?? [], stackView, depth + 1)
+        context.renderChildren(component.children ?? [], stackView, depth + 1, nil)
         if shouldAddTrailingSpacer(to: component) {
             let spacer = UIView()
             spacer.translatesAutoresizingMaskIntoConstraints = false
@@ -257,6 +261,102 @@ final class MojuComponentFactory {
             spacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
             stackView.addArrangedSubview(spacer)
         }
+        return stackView
+    }
+
+    private func makeTableView(_ component: MojuComponent, context: MojuRenderContext, depth: Int) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = component.style?.spacing ?? 0
+        stackView.alignment = context.styleParser.stackAlignment(from: component.style?.stackAlignment)
+        stackView.distribution = context.styleParser.stackDistribution(from: component.style?.distribution)
+        renderListItems(component, into: stackView, context: context, depth: depth)
+        return stackView
+    }
+
+    private func makeCollectionView(_ component: MojuComponent, context: MojuRenderContext, depth: Int) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = component.style?.spacing ?? 8
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+
+        let items = context.templateResolver.resolveArray(component.forEach)
+        let columns = max(component.columns ?? 2, 1)
+        let itemName = component.forItem?.isEmpty == false ? component.forItem! : "item"
+        let indexName = component.forIndex?.isEmpty == false ? component.forIndex! : "index"
+
+        for chunkStart in stride(from: 0, to: items.count, by: columns) {
+            let row = UIStackView()
+            row.axis = .horizontal
+            row.spacing = component.style?.spacing ?? 8
+            row.alignment = .fill
+            row.distribution = .fillEqually
+
+            let chunkEnd = min(chunkStart + columns, items.count)
+            for index in chunkStart..<chunkEnd {
+                let cell = makeListCell(
+                    component,
+                    item: items[index],
+                    index: index,
+                    itemName: itemName,
+                    indexName: indexName,
+                    context: context,
+                    depth: depth
+                )
+                row.addArrangedSubview(cell)
+            }
+
+            if chunkEnd - chunkStart < columns {
+                for _ in 0..<(columns - (chunkEnd - chunkStart)) {
+                    row.addArrangedSubview(UIView())
+                }
+            }
+
+            stackView.addArrangedSubview(row)
+        }
+
+        return stackView
+    }
+
+    private func renderListItems(_ component: MojuComponent, into stackView: UIStackView, context: MojuRenderContext, depth: Int) {
+        let items = context.templateResolver.resolveArray(component.forEach)
+        let itemName = component.forItem?.isEmpty == false ? component.forItem! : "item"
+        let indexName = component.forIndex?.isEmpty == false ? component.forIndex! : "index"
+
+        for (index, item) in items.enumerated() {
+            let cell = makeListCell(
+                component,
+                item: item,
+                index: index,
+                itemName: itemName,
+                indexName: indexName,
+                context: context,
+                depth: depth
+            )
+            stackView.addArrangedSubview(cell)
+        }
+    }
+
+    private func makeListCell(
+        _ component: MojuComponent,
+        item: MojuValue,
+        index: Int,
+        itemName: String,
+        indexName: String,
+        context: MojuRenderContext,
+        depth: Int
+    ) -> UIView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = component.style?.spacing ?? 0
+        stackView.alignment = context.styleParser.stackAlignment(from: component.style?.stackAlignment)
+        stackView.distribution = context.styleParser.stackDistribution(from: component.style?.distribution)
+        let resolver = context.templateResolver.withLocalValues([
+            itemName: item,
+            indexName: .int(index)
+        ])
+        context.renderChildren(component.children ?? [], stackView, depth + 1, resolver)
         return stackView
     }
 
@@ -278,10 +378,10 @@ final class MojuComponentFactory {
         tapRecognizer.addAction {
             Task { @MainActor in
                 if let stateKey = component.stateKey, let value = component.value {
-                    await context.actionHandler.handle(MojuAction(type: "setState", stateKey: stateKey, value: value))
+                    await context.actionHandler.handle(MojuAction(type: "setState", stateKey: stateKey, value: value), resolver: context.templateResolver)
                 }
                 if let action {
-                    await context.actionHandler.handle(action)
+                    await context.actionHandler.handle(action, resolver: context.templateResolver)
                 }
             }
         }
@@ -310,7 +410,7 @@ final class MojuComponentFactory {
         let tapRecognizer = UITapGestureRecognizer(target: nil, action: nil)
         tapRecognizer.addAction {
             Task { @MainActor in
-                await context.actionHandler.handle(action)
+                await context.actionHandler.handle(action, resolver: context.templateResolver)
             }
         }
         view.addGestureRecognizer(tapRecognizer)

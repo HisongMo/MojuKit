@@ -19,7 +19,7 @@ final class MojuRequestExecutor {
         self.templateResolver = MojuTemplateResolver(dataStore: dataStore)
     }
 
-    func execute(request: MojuRequest) async throws -> Any {
+    func execute(request: MojuRequest, resolver: MojuTemplateResolver? = nil) async throws -> Any {
         guard let endpoint = MojuAPIRegistry.endpoint(for: request.apiKey) else {
             MojuPageLogger.debug("unsupported apiKey: \(request.apiKey)")
             throw MojuPageError.unsupportedAPI
@@ -37,7 +37,8 @@ final class MojuRequestExecutor {
             throw MojuPageError.tooManyConcurrentRequests
         }
 
-        let resolvedParams = templateResolver.resolveParams(request.params ?? [:])
+        let activeResolver = resolver ?? templateResolver
+        let resolvedParams = activeResolver.resolveParams(request.params ?? [:])
         let params = resolvedParams.mapValues { $0.anyValue }
 
         if endpoint.riskLevel == .confirmationRequired {

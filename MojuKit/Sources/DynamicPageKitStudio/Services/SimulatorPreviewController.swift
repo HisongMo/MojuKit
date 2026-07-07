@@ -8,7 +8,7 @@ final class SimulatorPreviewController: ObservableObject {
     @Published private(set) var lastLog = ""
     @Published private(set) var lastLogFilePath = "-"
 
-    private let bundleIdentifier = "com.demo.MojuKit"
+    private let bundleIdentifier = "com.demo.MojuKitPreview"
     private var lastProjectURL: URL?
 
     func start(projectURL: URL?) {
@@ -27,7 +27,7 @@ final class SimulatorPreviewController: ObservableObject {
                 let hostProjectURL = try resolveHostProjectURL(from: projectURL)
                 let device = try await selectDevice()
                 selectedDeviceName = device.name
-                statusText = "正在构建 MojuKit..."
+                statusText = "正在构建 MojuKitPreview..."
 
                 let derivedDataURL = hostProjectURL.appendingPathComponent(".build/SimulatorPreviewDerivedData", isDirectory: true)
                 try await build(projectURL: hostProjectURL, derivedDataURL: derivedDataURL, device: device)
@@ -35,14 +35,14 @@ final class SimulatorPreviewController: ObservableObject {
                 statusText = "正在启动 \(device.name)..."
                 try await boot(device: device)
 
-                statusText = "正在安装 Preview Host..."
-                let appURL = derivedDataURL.appendingPathComponent("Build/Products/Debug-iphonesimulator/MojuKit.app", isDirectory: true)
+                statusText = "正在安装 MojuKitPreview..."
+                let appURL = derivedDataURL.appendingPathComponent("Build/Products/Debug-iphonesimulator/MojuKitPreview.app", isDirectory: true)
                 guard FileManager.default.fileExists(atPath: appURL.appendingPathComponent("Info.plist").path) else {
-                    throw SimulatorPreviewError.commandFailed("构建完成但未找到 MojuKit.app：\(appURL.path)")
+                    throw SimulatorPreviewError.commandFailed("构建完成但未找到 MojuKitPreview.app：\(appURL.path)")
                 }
                 try await run("/usr/bin/xcrun", ["simctl", "install", device.udid, appURL.path])
 
-                statusText = "正在打开 Preview Host..."
+                statusText = "正在打开 MojuKitPreview..."
                 _ = try? await run("/usr/bin/open", ["-a", "Simulator"])
                 _ = try? await run("/usr/bin/xcrun", ["simctl", "terminate", device.udid, bundleIdentifier])
                 try await run("/usr/bin/xcrun", ["simctl", "launch", device.udid, bundleIdentifier, "--dynamicpage-preview-host"])
@@ -62,7 +62,7 @@ final class SimulatorPreviewController: ObservableObject {
         }
 
         isWorking = true
-        statusText = "正在重新安装并启动 Preview Host..."
+        statusText = "正在重新安装并启动 MojuKitPreview..."
 
         Task {
             do {
@@ -70,7 +70,7 @@ final class SimulatorPreviewController: ObservableObject {
                 let device = try await selectDevice()
                 selectedDeviceName = device.name
                 let derivedDataURL = hostProjectURL.appendingPathComponent(".build/SimulatorPreviewDerivedData", isDirectory: true)
-                let appURL = derivedDataURL.appendingPathComponent("Build/Products/Debug-iphonesimulator/MojuKit.app", isDirectory: true)
+                let appURL = derivedDataURL.appendingPathComponent("Build/Products/Debug-iphonesimulator/MojuKitPreview.app", isDirectory: true)
                 if !FileManager.default.fileExists(atPath: appURL.path) {
                     try await build(projectURL: hostProjectURL, derivedDataURL: derivedDataURL, device: device)
                 }
@@ -79,7 +79,7 @@ final class SimulatorPreviewController: ObservableObject {
                 _ = try? await run("/usr/bin/xcrun", ["simctl", "terminate", device.udid, bundleIdentifier])
                 _ = try? await run("/usr/bin/open", ["-a", "Simulator"])
                 try await run("/usr/bin/xcrun", ["simctl", "launch", device.udid, bundleIdentifier, "--dynamicpage-preview-host"])
-                statusText = "\(device.name) Preview Host 已重启"
+                statusText = "\(device.name) MojuKitPreview 已重启"
             } catch {
                 statusText = "重启失败：\(error.localizedDescription)"
             }
@@ -96,8 +96,8 @@ final class SimulatorPreviewController: ObservableObject {
         try await run(
             "/usr/bin/xcodebuild",
             [
-                "-project", projectURL.appendingPathComponent("MojuKit.xcodeproj").path,
-                "-scheme", "MojuKit",
+                "-project", projectURL.appendingPathComponent("MojuKitPreview.xcodeproj").path,
+                "-scheme", "MojuKitPreview",
                 "-configuration", "Debug",
                 "-destination", destination,
                 "-derivedDataPath", derivedDataURL.path,
@@ -119,12 +119,12 @@ final class SimulatorPreviewController: ObservableObject {
         candidates.append(URL(fileURLWithPath: "/Users/wangleihaoshuaio/Developer/Demo/MojuKit", isDirectory: true))
 
         for candidate in candidates {
-            if FileManager.default.fileExists(atPath: candidate.appendingPathComponent("MojuKit.xcodeproj").path) {
+            if FileManager.default.fileExists(atPath: candidate.appendingPathComponent("MojuKitPreview.xcodeproj").path) {
                 return candidate
             }
         }
 
-        throw SimulatorPreviewError.commandFailed("没有找到 MojuKit.xcodeproj。页面项目可以是任意文件夹，但 Preview Host 需要当前 MojuKit 工程。")
+        throw SimulatorPreviewError.commandFailed("没有找到 MojuKitPreview.xcodeproj。页面项目可以是任意文件夹，但 MojuKitPreview 需要当前 MojuKitPreview 工程。")
     }
 
     private func boot(device: SimulatorDevice) async throws {

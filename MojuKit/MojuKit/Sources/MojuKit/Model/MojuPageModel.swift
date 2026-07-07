@@ -53,6 +53,10 @@ public struct MojuComponent: Codable {
     public let visible: MojuValue?
     public let stateKey: String?
     public let value: MojuValue?
+    public let forEach: String?
+    public let forItem: String?
+    public let forIndex: String?
+    public let columns: Int?
 
     public init(
         id: String? = nil,
@@ -71,7 +75,11 @@ public struct MojuComponent: Codable {
         children: [MojuComponent]? = nil,
         visible: MojuValue? = nil,
         stateKey: String? = nil,
-        value: MojuValue? = nil
+        value: MojuValue? = nil,
+        forEach: String? = nil,
+        forItem: String? = nil,
+        forIndex: String? = nil,
+        columns: Int? = nil
     ) {
         self.id = id
         self.type = type
@@ -90,6 +98,10 @@ public struct MojuComponent: Codable {
         self.visible = visible
         self.stateKey = stateKey
         self.value = value
+        self.forEach = forEach
+        self.forItem = forItem
+        self.forIndex = forIndex
+        self.columns = columns
     }
 }
 
@@ -132,6 +144,8 @@ enum MojuComponentType: String {
     case row
     case icon
     case selectableCard
+    case tableView
+    case collectionView
 }
 
 extension MojuStyle {

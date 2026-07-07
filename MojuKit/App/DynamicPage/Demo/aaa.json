@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0",
+  "pageId": "aaa",
+  "pageTitle": "绑定成功",
+  "backgroundColor": "#FFFFFF",
+  "components": [
+    {
+      "id": "success_card",
+      "type": "card",
+      "style": {
+        "paddingTop": 30,
+        "paddingBottom": 20,
+        "stackAlignment": "center",
+        "spacing": 16
+      },
+      "children": [
+        {
+          "id": "success_icon",
+          "type": "icon",
+          "iconName": "checkmark.seal.fill",
+          "style": {
+            "width": 64,
+            "height": 64,
+            "textColor": "#43A86B"
+          }
+        },
+        {
+          "id": "success_title",
+          "type": "text",
+          "text": "ETC 绑定成功",
+          "style": {
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "textColor": "#333333"
+          }
+        },
+        {
+          "id": "success_desc",
+          "type": "text",
+          "text": "您的 ETC 卡已成功与车辆进行绑定，现在您可以享受便捷的无感通行服务了。",
+          "style": {
+            "fontSize": 14,
+            "textColor": "#666666",
+            "alignment": "center",
+            "numberOfLines": 0,
+            "marginLeft": 24,
+            "marginRight": 24
+          }
+        },
+        {
+          "id": "close_btn",
+          "type": "button",
+          "text": "我知道了",
+          "style": {
+            "height": 44,
+            "width": 180,
+            "backgroundColor": "#43A86B",
+            "textColor": "#FFFFFF",
+            "cornerRadius": 22,
+            "marginTop": 20
+          },
+          "action": {
+            "type": "navigate",
+            "target": "back"
+          }
+        }
+      ]
+    }
+  ]
+}

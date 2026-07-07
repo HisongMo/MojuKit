@@ -1,0 +1,35 @@
+{
+  "backgroundColor" : "#F4F4F4",
+  "navigationBar" : {
+    "backButton" : {
+      "iconName" : "chevron.backward",
+      "id" : "back_btn"
+    },
+    "backgroundColor" : "#43A86B",
+    "hidden" : false,
+    "hideBackButton" : false,
+    "rightButtons" : [
+      {
+        "action" : {
+          "target" : "CustomerService",
+          "type" : "navigate"
+        },
+        "iconName" : "headphones",
+        "id" : "customer_service_btn",
+        "text" : "客服"
+      }
+    ],
+    "textColor" : "#fff"
+  },
+  "pageId" : "etc_binding_demo",
+  "pageParams" : {
+    "isETC1Selected" : "true",
+    "isETC2Selected" : "false",
+    "selectedActivationDate" : "2025年11月26日",
+    "selectedCardId" : "etc_1",
+    "selectedCardNo" : "6230 **** **** 8821",
+    "selectedPlateNo" : "京A1****6"
+  },
+  "pageTitle" : "绑定ETC卡",
+  "schemaVersion" : "1.0"
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "1.0",
+  "pageId": "navigation_detail_demo",
+  "pageTitle": "详情页",
+  "backgroundColor": "#FFFFFF",
+  "components": [
+    {
+      "id": "top_bar",
+      "type": "row",
+      "style": {
+        "height": 64,
+        "backgroundColor": "#111827",
+        "paddingTop": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16,
+        "spacing": 12,
+        "stackAlignment": "center"
+      },
+      "children": [
+        {
+          "id": "back_icon",
+          "type": "icon",
+          "iconName": "chevron.left",
+          "style": {
+            "width": 24,
+            "height": 24,
+            "textColor": "#FFFFFF"
+          },
+          "action": {
+            "type": "navigate",
+            "target": "back"
+          }
+        },
+        {
+          "id": "bar_title",
+          "type": "text",
+          "text": "动态页 B",
+          "style": {
+            "fontSize": 16,
+            "fontWeight": "semibold",
+            "textColor": "#FFFFFF"
+          }
+        }
+      ]
+    },
+    {
+      "id": "detail_title",
+      "type": "text",
+      "text": "{{pageParams.itemTitle}}",
+      "defaultText": "详情页",
+      "style": {
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "textColor": "#111827",
+        "marginTop": 32,
+        "marginLeft": 24,
+        "marginRight": 24
+      }
+    },
+    {
+      "id": "detail_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#F4F6F8",
+        "cornerRadius": 14,
+        "marginTop": 18,
+        "marginLeft": 20,
+        "marginRight": 20,
+        "paddingTop": 18,
+        "paddingBottom": 18,
+        "paddingLeft": 18,
+        "paddingRight": 18,
+        "spacing": 12
+      },
+      "children": [
+        {
+          "id": "item_id",
+          "type": "text",
+          "text": "收到参数 itemId：{{pageParams.itemId}}",
+          "style": {
+            "fontSize": 16,
+            "textColor": "#374151"
+          }
+        },
+        {
+          "id": "source",
+          "type": "text",
+          "text": "收到参数 source：{{pageParams.source}}",
+          "style": {
+            "fontSize": 16,
+            "textColor": "#374151"
+          }
+        }
+      ]
+    }
+  ],
+  "fixedBottomComponents": [
+    {
+      "id": "back_button",
+      "type": "button",
+      "text": "返回上一页",
+      "style": {
+        "height": 48,
+        "backgroundColor": "#111827",
+        "textColor": "#FFFFFF",
+        "fontSize": 16,
+        "fontWeight": "medium",
+        "cornerRadius": 24,
+        "marginTop": 14,
+        "marginLeft": 28,
+        "marginRight": 28,
+        "marginBottom": 18
+      },
+      "action": {
+        "type": "navigate",
+        "target": "back"
+      }
+    }
+  ]
+}

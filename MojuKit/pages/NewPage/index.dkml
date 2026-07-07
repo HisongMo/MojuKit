@@ -1,0 +1,4 @@
+<page class="page">
+  <text class="title">Hello DynamicPageKit</text>
+  <button class="primary-button" bindtap="goNext">查看详情</button>
+</page>

@@ -1,0 +1,21 @@
+{
+  "scopeName": "source.dkss",
+  "patterns": [
+    {
+      "name": "entity.other.attribute-name.class.dkss",
+      "match": "\\.[A-Za-z0-9_-]+"
+    },
+    {
+      "name": "support.type.property-name.dkss",
+      "match": "\\b(width|height|margin|padding|background-color|text-color|font-size|font-weight|corner-radius|border-width|border-color|alignment|text-align|stack-alignment|distribution|spacing|content-mode|number-of-lines|hidden)\\b"
+    },
+    {
+      "name": "constant.numeric.dkss",
+      "match": "\\b\\d+(\\.\\d+)?\\b"
+    },
+    {
+      "name": "constant.other.color.dkss",
+      "match": "#[0-9A-Fa-f]{3,8}\\b"
+    }
+  ]
+}

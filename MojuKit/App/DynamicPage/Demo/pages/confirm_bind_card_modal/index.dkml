@@ -1,0 +1,21 @@
+<page class="page">
+  <text class="component-0">确认绑卡信息</text>
+  <view class="component-1">
+  <row class="component-2">
+  <text class="component-3">ETC卡号</text>
+  <text class="component-4">6230 **** **** 8821</text>
+  </row>
+  <row class="component-5">
+  <text class="component-6">绑定车牌</text>
+  <text class="component-7">京A1****6</text>
+  </row>
+  <row class="component-8">
+  <text class="component-9">激活时间</text>
+  <text class="component-10">2026年7月10日</text>
+  </row>
+  </view>
+  <row class="component-11">
+  <button class="component-12">取消</button>
+  <button class="component-13">发送验证码</button>
+  </row>
+</page>

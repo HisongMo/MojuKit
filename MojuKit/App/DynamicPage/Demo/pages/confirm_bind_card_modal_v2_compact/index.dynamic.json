@@ -1,0 +1,206 @@
+{
+  "backgroundColor" : "#FFFFFF",
+  "components" : [
+    {
+      "style" : {
+        "alignment" : "center",
+        "fontSize" : 18,
+        "fontWeight" : "medium",
+        "marginBottom" : 0,
+        "marginLeft" : 20,
+        "marginRight" : 20,
+        "marginTop" : 24,
+        "textColor" : "hsl(0, 0%, 13%)"
+      },
+      "text" : "确认绑卡信息",
+      "type" : "text"
+    },
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "alignment" : "right",
+                    "fontSize" : 15,
+                    "textColor" : "#9B9B9B",
+                    "width" : 72
+                  },
+                  "text" : "ETC卡号",
+                  "type" : "text"
+                },
+                {
+                  "style" : {
+                    "alignment" : "left",
+                    "fontSize" : 15,
+                    "textColor" : "#333333",
+                    "width" : 160
+                  },
+                  "text" : "{{pageParams.cardNo}}",
+                  "type" : "text"
+                }
+              ],
+              "style" : {
+                "alignment" : "center",
+                "spacing" : 22
+              },
+              "type" : "row"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "alignment" : "right",
+                    "fontSize" : 15,
+                    "textColor" : "#9B9B9B",
+                    "width" : 72
+                  },
+                  "text" : "绑定车牌",
+                  "type" : "text"
+                },
+                {
+                  "style" : {
+                    "alignment" : "left",
+                    "fontSize" : 15,
+                    "textColor" : "#333333",
+                    "width" : 160
+                  },
+                  "text" : "{{pageParams.plateNo}}",
+                  "type" : "text"
+                }
+              ],
+              "style" : {
+                "alignment" : "center",
+                "spacing" : 22
+              },
+              "type" : "row"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "alignment" : "right",
+                    "fontSize" : 15,
+                    "textColor" : "#9B9B9B",
+                    "width" : 72
+                  },
+                  "text" : "激活时间",
+                  "type" : "text"
+                },
+                {
+                  "style" : {
+                    "alignment" : "left",
+                    "fontSize" : 15,
+                    "textColor" : "#333333",
+                    "width" : 160
+                  },
+                  "text" : "{{pageParams.activationDate}}",
+                  "type" : "text"
+                }
+              ],
+              "style" : {
+                "alignment" : "center",
+                "spacing" : 22
+              },
+              "type" : "row"
+            }
+          ],
+          "style" : {
+            "spacing" : 12,
+            "width" : 260
+          },
+          "type" : "card"
+        }
+      ],
+      "style" : {
+        "paddingBottom" : 24,
+        "paddingLeft" : 0,
+        "paddingRight" : 0,
+        "paddingTop" : 24,
+        "stackAlignment" : "center"
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+        {
+          "action" : {
+            "target" : "back",
+            "type" : "navigate"
+          },
+          "style" : {
+            "backgroundColor" : "#F1F1F1",
+            "cornerRadius" : 20,
+            "fontSize" : 16,
+            "height" : 44,
+            "textColor" : "#999999",
+            "width" : 180
+          },
+          "text" : "取消",
+          "type" : "button"
+        },
+        {
+          "action" : {
+            "request" : {
+              "apiKey" : "confirm_bind_etc_card",
+              "failureAction" : {
+                "actions" : [
+                  {
+                    "message" : "绑定失败，请稍后重试",
+                    "type" : "toast"
+                  },
+                  {
+                    "delayMilliseconds" : 500,
+                    "type" : "delay"
+                  },
+                  {
+                    "target" : "testPop",
+                    "type" : "navigate"
+                  }
+                ],
+                "type" : "sequence"
+              },
+              "loadingText" : "提交中",
+              "params" : {
+                "cardId" : "{{selectedCardId}}"
+              },
+              "showLoading" : true,
+              "successAction" : {
+                "message" : "绑定成功",
+                "type" : "toast"
+              }
+            },
+            "type" : "request"
+          },
+          "style" : {
+            "backgroundColor" : "#43A86B",
+            "cornerRadius" : 20,
+            "fontSize" : 16,
+            "fontWeight" : "medium",
+            "height" : 44,
+            "textColor" : "#FFFFFF",
+            "width" : 180
+          },
+          "text" : "发送验证码",
+          "type" : "button"
+        }
+      ],
+      "style" : {
+        "marginBottom" : 18,
+        "marginLeft" : 10,
+        "marginRight" : 10,
+        "marginTop" : 26,
+        "spacing" : 10
+      },
+      "type" : "row"
+    }
+  ],
+  "navigationBar" : {
+    "hidden" : true
+  },
+  "pageId" : "confirm_bind_card_modal",
+  "pageTitle" : "",
+  "schemaVersion" : "1.0.0"
+}

@@ -1,0 +1,25 @@
+<page class="page">
+  <text class="component-0">确认绑卡信息</text>
+  <view class="info-wrap">
+  <column class="info-table">
+    <row class="info-row">
+      <text class="info-label">ETC卡号</text>
+      <text class="info-value">{{pageParams.cardNo}}</text>
+    </row>
+
+    <row class="info-row">
+      <text class="info-label">绑定车牌</text>
+      <text class="info-value">{{pageParams.plateNo}}</text>
+    </row>
+
+    <row class="info-row">
+      <text class="info-label">激活时间</text>
+      <text class="info-value">{{pageParams.activationDate}}</text>
+    </row>
+  </column>
+</view>
+  <row class="component-11">
+    <button class="halfbtn component-12" bindtap="onTap_cancel_button">取消</button>
+    <button class="halfbtn component-13" bindtap="onTap_send_code_button">发送验证码</button>
+  </row>
+</page>

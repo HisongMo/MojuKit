@@ -1,0 +1,9 @@
+{
+  "backgroundColor" : "#F4F4F4",
+  "pageId" : "etc_binding_demo",
+  "pageParams" : {
+    "selectedCardId" : "etc_1"
+  },
+  "pageTitle" : "绑定ETC卡",
+  "schemaVersion" : "1.0"
+}

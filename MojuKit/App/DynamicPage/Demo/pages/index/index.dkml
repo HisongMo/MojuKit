@@ -1,0 +1,43 @@
+<page class="page">
+  <view class="component-0">
+    <text class="component-1">✓ 为您找到 2 张ETC卡，请选择可用的卡进行绑定</text>
+  </view>
+  <text class="component-2">选择要绑定的ETC卡</text>
+  <view class="component-3">
+    <selectable-card class="component-4" state-key="pageParams.selectedCardId" value="etc_1" bindtap="onTap_component_4">
+      <row class="component-5">
+        <text class="component-6">6230 **** **** 8821</text>
+        <icon dk:if="{{pageParams.isETC1Selected}}" class="component-7" name="checkmark.circle.fill" />
+        <icon dk:if="{{pageParams.isETC2Selected}}" class="component-7" name="circle" />
+      </row>
+      <text class="component-8">京A1****6</text>
+      <row class="component-9">
+        <text class="component-10">2025年11月26日</text>
+        <text class="component-11">激活成功</text>
+      </row>
+    </selectable-card>
+    <selectable-card class="component-12" state-key="pageParams.selectedCardId" value="etc_2" bindtap="onTap_component_12">
+      <row class="component-13">
+        <text class="component-14">6230 **** **** 9952</text>
+        <icon dk:if="{{pageParams.isETC2Selected}}" class="component-15" name="checkmark.circle.fill" />
+        <icon dk:if="{{pageParams.isETC1Selected}}" class="component-15" name="circle" />
+      </row>
+      <text class="component-16">粤B5****8</text>
+      <row class="component-17">
+        <text class="component-18">2025年11月26日</text>
+        <text class="component-19">激活成功</text>
+      </row>
+    </selectable-card>
+  </view>
+  <row class="component-20">
+    <icon class="component-21" name="questionmark.circle.fill" />
+    <text class="component-22">卡不在列表？</text>
+  </row>
+  <row class="component-23" bindtap="onTap_component_24">
+    <text class="component-24">手动输入车牌号绑定</text>
+    <icon class="component-25" name="chevron.right" />
+  </row>
+  <view class="component-26" slot="fixedBottom">
+    <button class="component-27" bindtap="onTap_component_28">确认绑定</button>
+  </view>
+</page>

@@ -1,0 +1,289 @@
+{
+  "name": "dynamicpagekit-studio",
+  "displayName": "DynamicPageKit Studio",
+  "description": "Edit, compile, and preview DynamicPageKit DKML/DKSS/JS pages in VS Code.",
+  "version": "0.1.0",
+  "publisher": "dynamicpagekit",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+    "activationEvents": [
+      "onStartupFinished",
+      "onLanguage:dkml",
+      "onLanguage:dkss",
+      "onLanguage:dynamicpage-js",
+      "onCommand:dynamicPageKit.newPage",
+      "onCommand:dynamicPageKit.importJSON",
+      "onCommand:dynamicPageKit.importJSONBatch",
+      "onCommand:dynamicPageKit.validateActive",
+      "onCommand:dynamicPageKit.validateProject",
+      "onCommand:dynamicPageKit.exportJSONPackage",
+      "onCommand:dynamicPageKit.packageAndUpload",
+      "onCommand:dynamicPageKit.startPreviewService",
+      "onCommand:dynamicPageKit.startPreview"
+    ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dynamicPageKit",
+          "title": "DynamicPageKit",
+          "icon": "resources/activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "dynamicPageKit": [
+        {
+          "id": "dynamicPageKit.pages",
+          "name": "Pages"
+        },
+        {
+          "id": "dynamicPageKit.preview",
+          "name": "Preview",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dynamicPageKit.refreshPages",
+        "title": "DynamicPageKit: Refresh Pages"
+      },
+      {
+        "command": "dynamicPageKit.openPage",
+        "title": "DynamicPageKit: Open Page"
+      },
+      {
+        "command": "dynamicPageKit.newPage",
+        "title": "DynamicPageKit: New Page",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "dynamicPageKit.deletePage",
+        "title": "DynamicPageKit: Delete Page",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dynamicPageKit.importJSON",
+        "title": "DynamicPageKit: Import JSON",
+        "icon": "$(file-code)"
+      },
+      {
+        "command": "dynamicPageKit.importJSONBatch",
+        "title": "DynamicPageKit: Import JSON Batch",
+        "icon": "$(files)"
+      },
+      {
+        "command": "dynamicPageKit.compileActive",
+        "title": "DynamicPageKit: Save and Compile"
+      },
+      {
+        "command": "dynamicPageKit.validateActive",
+        "title": "DynamicPageKit: Validate Active Page",
+        "icon": "$(check)"
+      },
+      {
+        "command": "dynamicPageKit.validateProject",
+        "title": "DynamicPageKit: Validate Project",
+        "icon": "$(check-all)"
+      },
+      {
+        "command": "dynamicPageKit.exportJSONPackage",
+        "title": "DynamicPageKit: Export Runtime JSON Package",
+        "icon": "$(package)"
+      },
+      {
+        "command": "dynamicPageKit.packageAndUpload",
+        "title": "DynamicPageKit: Package and Upload",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "dynamicPageKit.startPreviewService",
+        "title": "DynamicPageKit: Start Preview Service",
+        "icon": "$(radio-tower)"
+      },
+      {
+        "command": "dynamicPageKit.startPreview",
+        "title": "DynamicPageKit: Start Preview"
+      },
+      {
+        "command": "dynamicPageKit.restartHost",
+        "title": "DynamicPageKit: Restart Host"
+      },
+      {
+        "command": "dynamicPageKit.refreshPreview",
+        "title": "DynamicPageKit: Refresh Active Page"
+      }
+    ],
+    "configuration": {
+      "title": "DynamicPageKit",
+      "properties": {
+        "dynamicPageKit.hostProjectPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the MojuKit project containing MojuKit.xcodeproj. Defaults to the current workspace if present."
+        },
+        "dynamicPageKit.previewPort": {
+          "type": "number",
+          "default": 8088,
+          "description": "Local preview HTTP server port."
+        },
+        "dynamicPageKit.backendBaseURL": {
+          "type": "string",
+          "default": "",
+          "description": "Samwell backend base URL for DynamicPageKit package upload, for example http://127.0.0.1:8080."
+        },
+        "dynamicPageKit.backendToken": {
+          "type": "string",
+          "default": "",
+          "description": "Management token sent as X-DPK-Token when uploading DynamicPageKit packages."
+        },
+        "dynamicPageKit.projectKey": {
+          "type": "string",
+          "default": "",
+          "description": "DynamicPageKit backend project key. Defaults to the workspace folder name when empty."
+        },
+        "dynamicPageKit.projectName": {
+          "type": "string",
+          "default": "",
+          "description": "Optional DynamicPageKit backend project display name."
+        },
+        "dynamicPageKit.operator": {
+          "type": "string",
+          "default": "",
+          "description": "Optional operator name recorded on uploaded DynamicPageKit versions."
+        }
+      }
+    },
+    "languages": [
+      {
+        "id": "dkml",
+        "aliases": [
+          "DKML"
+        ],
+        "extensions": [
+          ".dkml"
+        ],
+        "configuration": "./language-configuration/dkml.json"
+      },
+      {
+        "id": "dkss",
+        "aliases": [
+          "DKSS"
+        ],
+        "extensions": [
+          ".dkss"
+        ],
+        "configuration": "./language-configuration/dkss.json"
+      },
+      {
+        "id": "dynamicpage-js",
+        "aliases": [
+          "DynamicPage JS"
+        ],
+        "filenames": [
+          "index.js"
+        ],
+        "configuration": "./language-configuration/dynamicpage-js.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "dkml",
+        "scopeName": "source.dkml",
+        "path": "./syntaxes/dkml.tmLanguage.json"
+      },
+      {
+        "language": "dkss",
+        "scopeName": "source.dkss",
+        "path": "./syntaxes/dkss.tmLanguage.json"
+      },
+      {
+        "language": "dynamicpage-js",
+        "scopeName": "source.dynamicpage-js",
+        "path": "./syntaxes/dynamicpage-js.tmLanguage.json"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dynamicPageKit.newPage",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dynamicPageKit.importJSON",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@2"
+        },
+        {
+          "command": "dynamicPageKit.importJSONBatch",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@3"
+        },
+        {
+          "command": "dynamicPageKit.refreshPages",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@4"
+        },
+        {
+          "command": "dynamicPageKit.exportJSONPackage",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@5"
+        },
+        {
+          "command": "dynamicPageKit.packageAndUpload",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@6"
+        },
+        {
+          "command": "dynamicPageKit.startPreview",
+          "when": "view == dynamicPageKit.preview",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dynamicPageKit.startPreviewService",
+          "when": "view == dynamicPageKit.preview",
+          "group": "navigation@2"
+        },
+        {
+          "command": "dynamicPageKit.validateActive",
+          "when": "view == dynamicPageKit.preview",
+          "group": "navigation@3"
+        },
+        {
+          "command": "dynamicPageKit.packageAndUpload",
+          "when": "view == dynamicPageKit.preview",
+          "group": "navigation@4"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dynamicPageKit.openPage",
+          "when": "view == dynamicPageKit.pages",
+          "group": "inline"
+        },
+        {
+          "command": "dynamicPageKit.deletePage",
+          "when": "view == dynamicPageKit.pages && viewItem == dynamicPageKitPage",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "node -c ./out/extension.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.5",
+    "@vscode/vsce": "^2.15.0"
+  }
+}

@@ -1,0 +1,49 @@
+<page class="page">
+  <row class="component-0">
+    <view class="component-0">
+    </view>
+    <text class="component-1">绑定ETC卡</text>
+  </row>
+  <row class="component-1">
+    <view class="component-100">
+    </view>
+    <text class="component-101">为您找到 3 张ETC卡，请选择可用的卡进行绑定</text>
+  </row>
+  <text class="component-2">选择要绑定的ETC卡</text>
+  <view class="component-3">
+    <view class="component-300">
+      <row class="component-30000">
+        <text class="component-3000000">6230 **** **** 8821</text>
+        <view class="component-3000001">
+        </view>
+      </row>
+      <text class="component-30001">京A1****6</text>
+      <row class="component-30002">
+        <text class="component-3000200">2025年11月26日</text>
+        <text class="component-3000201">激活成功</text>
+      </row>
+    </view>
+    <view class="component-301">
+      <row class="component-30100">
+        <text class="component-3010000">6230 **** **** 8821</text>
+        <view class="component-3010001">
+        </view>
+      </row>
+      <text class="component-30101">京A1****6</text>
+      <row class="component-30102">
+        <text class="component-3010200">2025年11月26日</text>
+        <text class="component-3010201">激活成功</text>
+      </row>
+    </view>
+  </view>
+  <row class="component-4">
+    <view class="component-400">
+    </view>
+    <text class="component-401">卡不在列表？</text>
+  </row>
+  <row class="component-5">
+    <text class="component-500">手动输入车牌号绑定</text>
+    <view class="component-501">
+    </view>
+  </row>
+</page>

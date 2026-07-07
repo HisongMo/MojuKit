@@ -1,0 +1,21 @@
+{
+  "backgroundColor" : "#F5F7FA",
+  "navigationBar" : {
+    "backButton" : {
+      "iconName" : "chevron.backward",
+      "id" : "navigation_back_button"
+    },
+    "backgroundColor" : "#FFFFFF",
+    "hidden" : false,
+    "hideBackButton" : false,
+    "textColor" : "#1F2D3D"
+  },
+  "pageId" : "personal_information_collection_list_compact",
+  "pageParams" : {
+    "moduleCount" : "14",
+    "rowCount" : "102",
+    "sourceDocument" : "2_e高速App_个人信息收集清单_CM20260613.docx"
+  },
+  "pageTitle" : "个人信息收集清单",
+  "schemaVersion" : "1.0.0"
+}

@@ -1,0 +1,18 @@
+{
+  "scopeName": "source.dynamicpage-js",
+  "patterns": [
+    {
+      "name": "support.function.dynamicpage-js",
+      "match": "\\b(Page|dk\\.setState|dk\\.navigate|dk\\.back|dk\\.toast|dk\\.track|dk\\.request)\\b"
+    },
+    {
+      "name": "string.quoted.double.dynamicpage-js",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "keyword.control.dynamicpage-js",
+      "match": "\\b(data|methods|function|event|dataset)\\b"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+<page class="page">
+  <text class="component-0">{{vipData.name}}</text>
+  <image class="component-1" src="{{vipData.bannerUrl}}" />
+  <view class="component-2">
+  <text class="component-200">有效期至：{{vipData.expireDate}}</text>
+  </view>
+  <button class="component-3">立即开通</button>
+  <button class="component-4">打开e高速</button>
+</page>

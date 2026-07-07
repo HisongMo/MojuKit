@@ -1,0 +1,23 @@
+{
+  "backgroundColor" : "#F4F4F4",
+  "navigationBar" : {
+    "backButton" : {
+      "iconName" : "chevron.backward",
+      "id" : "navigation_back_button"
+    },
+    "backgroundColor" : "#43A86B",
+    "hidden" : false,
+    "hideBackButton" : false,
+    "textColor" : "#FFFFFF"
+  },
+  "pageId" : "etc_sms_verification_page",
+  "pageParams" : {
+    "cardNo" : "6230 **** **** 8821",
+    "countdown" : "54s",
+    "phoneMasked" : "138****6688",
+    "plateNo" : "京A1****6",
+    "verificationCode" : "3A12"
+  },
+  "pageTitle" : "绑定ETC卡",
+  "schemaVersion" : "1.0.0"
+}

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": "1.0",
+  "pageId": "vip_center",
+  "pageTitle": "会员中心",
+  "backgroundColor": "#F7F8FA",
+  "pageParams": {
+    "source": "home"
+  },
+  "onLoad": [
+    {
+      "id": "load_vip_info",
+      "apiKey": "vipInfo",
+      "params": {
+        "source": "{{pageParams.source}}"
+      },
+      "responseKey": "vipData",
+      "showLoading": true
+    }
+  ],
+  "components": [
+    {
+      "id": "title_1",
+      "type": "text",
+      "text": "{{vipData.name}}",
+      "defaultText": "会员中心",
+      "style": {
+        "fontSize": 24,
+        "fontWeight": "bold",
+        "textColor": "#222222",
+        "marginTop": 24,
+        "marginLeft": 16,
+        "marginRight": 16
+      }
+    },
+    {
+      "id": "banner_1",
+      "type": "image",
+      "imageUrl": "{{vipData.bannerUrl}}",
+      "style": {
+        "height": 160,
+        "cornerRadius": 12,
+        "contentMode": "aspectFill",
+        "marginTop": 12,
+        "marginLeft": 16,
+        "marginRight": 16
+      }
+    },
+    {
+      "id": "vip_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 12,
+        "marginTop": 16,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "paddingTop": 16,
+        "paddingBottom": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16
+      },
+      "children": [
+        {
+          "id": "expire_text",
+          "type": "text",
+          "text": "有效期至：{{vipData.expireDate}}",
+          "defaultText": "有效期加载中",
+          "style": {
+            "fontSize": 14,
+            "textColor": "#666666"
+          }
+        }
+      ]
+    },
+    {
+      "id": "open_button",
+      "type": "button",
+      "text": "立即开通",
+      "style": {
+        "height": 48,
+        "backgroundColor": "#2F80ED",
+        "textColor": "#FFFFFF",
+        "fontSize": 16,
+        "fontWeight": "medium",
+        "cornerRadius": 12,
+        "marginTop": 20,
+        "marginLeft": 16,
+        "marginRight": 16
+      },
+      "action": {
+        "type": "request",
+        "request": {
+          "id": "open_vip_request",
+          "apiKey": "openVip",
+          "params": {
+            "productId": "10001",
+            "source": "{{pageParams.source}}"
+          },
+          "responseKey": "openVipResult",
+          "loadingText": "处理中",
+          "successAction": {
+            "type": "toast",
+            "message": "开通成功"
+          },
+          "failureAction": {
+            "type": "toast",
+            "message": "开通失败，请稍后重试"
+          }
+        }
+      }
+    },
+    {
+      "id": "modal_test_button",
+      "type": "button",
+      "text": "测试动态弹窗 (JSON 调用)",
+      "style": {
+        "height": 44,
+        "backgroundColor": "#FF8C00",
+        "textColor": "#FFFFFF",
+        "fontSize": 15,
+        "cornerRadius": 10,
+        "marginTop": 12,
+        "marginLeft": 16,
+        "marginRight": 16
+      },
+      "action": {
+        "type": "showModal",
+        "target": "DynamicPageNavigationDetailDemo",
+        "params": {
+          "modal_position": "bottom",
+          "modal_width": "{{UIConfigure.width-20}}",
+          "modal_height": 500,
+          "modal_useCover": true,
+          "modal_canTouchCoverCloseSelf": true,
+          "modal_bottomSpacing": 10,
+          "modal_topRadius": 20,
+          "modal_bottomRadius": "{{UIConfigure.realCornerRadius}}"
+        }
+      }
+    },
+    {
+      "id": "detail_button",
+      "type": "button",
+      "text": "查看会员详情",
+      "style": {
+        "height": 44,
+        "backgroundColor": "#111111",
+        "textColor": "#FFFFFF",
+        "fontSize": 15,
+        "cornerRadius": 10,
+        "marginTop": 12,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "marginBottom": 24
+      },
+      "action": {
+        "type": "navigate",
+        "target": "vipDetail",
+        "params": {
+          "vipId": "{{vipData.id}}"
+        }
+      }
+    }
+  ]
+}

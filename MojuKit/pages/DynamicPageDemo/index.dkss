@@ -1,0 +1,44 @@
+.component-0 {
+  margin: 24 16 0 16;
+  text-color: #222222;
+  font-size: 24;
+  font-weight: bold;
+}
+
+.component-1 {
+  height: 160;
+  margin: 12 16 0 16;
+  corner-radius: 12;
+  content-mode: aspectFill;
+}
+
+.component-2 {
+  margin: 16 16 0 16;
+  padding: 16 16 16 16;
+  background-color: #FFFFFF;
+  corner-radius: 12;
+}
+
+.component-200 {
+  text-color: #666666;
+  font-size: 14;
+}
+
+.component-3 {
+  height: 48;
+  margin: 20 16 0 16;
+  background-color: #2F80ED;
+  text-color: #FFFFFF;
+  font-size: 16;
+  font-weight: medium;
+  corner-radius: 12;
+}
+
+.component-4 {
+  height: 44;
+  margin: 22 16 222 16;
+  background-color: #111111;
+  text-color: #FFFFFF;
+  font-size: 15;
+  corner-radius: 22;
+}

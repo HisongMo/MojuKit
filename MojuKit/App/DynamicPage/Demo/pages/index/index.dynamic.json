@@ -1,0 +1,486 @@
+{
+  "backgroundColor" : "#F4F4F4",
+  "components" : [
+    {
+      "children" : [
+        {
+          "style" : {
+            "alignment" : "left",
+            "fontSize" : 13,
+            "numberOfLines" : 1,
+            "textColor" : "#37A665"
+          },
+          "text" : "✓ 为您找到 2 张ETC卡，请选择可用的卡进行绑定",
+          "type" : "text"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#DDFBE8",
+        "cornerRadius" : 6,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 10,
+        "paddingBottom" : 10,
+        "paddingLeft" : 12,
+        "paddingRight" : 12,
+        "paddingTop" : 10
+      },
+      "type" : "card"
+    },
+    {
+      "style" : {
+        "fontSize" : 13,
+        "marginBottom" : 0,
+        "marginLeft" : 22,
+        "marginRight" : 22,
+        "marginTop" : 14,
+        "textColor" : "#666666"
+      },
+      "text" : "选择要绑定的ETC卡",
+      "type" : "text"
+    },
+    {
+      "children" : [
+        {
+          "action" : {
+            "actions" : [
+              {
+                "stateKey" : "pageParams.selectedCardId",
+                "type" : "setState",
+                "value" : "etc_1"
+              },
+              {
+                "stateKey" : "pageParams.isETC1Selected",
+                "type" : "setState",
+                "value" : "true"
+              },
+              {
+                "stateKey" : "pageParams.isETC2Selected",
+                "type" : "setState",
+                "value" : "false"
+              },
+              {
+                "stateKey" : "pageParams.selectedCardNo",
+                "type" : "setState",
+                "value" : "6230 **** **** 8821"
+              },
+              {
+                "stateKey" : "pageParams.selectedPlateNo",
+                "type" : "setState",
+                "value" : "京A1****6"
+              },
+              {
+                "stateKey" : "pageParams.selectedActivationDate",
+                "type" : "setState",
+                "value" : "2025年11月26日"
+              }
+            ],
+            "type" : "sequence"
+          },
+          "children" : [
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 19,
+                    "textColor" : "#FFFFFF"
+                  },
+                  "text" : "6230 **** **** 8821",
+                  "type" : "text"
+                },
+                {
+                  "iconName" : "checkmark.circle.fill",
+                  "style" : {
+                    "fontSize" : 28,
+                    "height" : 28,
+                    "textColor" : "#FFFFFF",
+                    "width" : 28
+                  },
+                  "type" : "icon",
+                  "visible" : "{{pageParams.isETC1Selected}}"
+                },
+                {
+                  "iconName" : "circle",
+                  "style" : {
+                    "fontSize" : 28,
+                    "height" : 28,
+                    "textColor" : "#FFFFFF",
+                    "width" : 28
+                  },
+                  "type" : "icon",
+                  "visible" : "{{pageParams.isETC2Selected}}"
+                }
+              ],
+              "style" : {
+                "spacing" : 10,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            },
+            {
+              "style" : {
+                "fontSize" : 14,
+                "marginBottom" : 0,
+                "marginLeft" : 0,
+                "marginRight" : 0,
+                "marginTop" : 11,
+                "textColor" : "#DCEBFF"
+              },
+              "text" : "京A1****6",
+              "type" : "text"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 14,
+                    "textColor" : "#DCEBFF",
+                    "widthMode" : "fit-content"
+                  },
+                  "text" : "2025年11月26日",
+                  "type" : "text"
+                },
+                {
+                  "style" : {
+                    "backgroundColor" : "#E8FFF1",
+                    "cornerRadius" : 3,
+                    "fontSize" : 11,
+                    "paddingBottom" : 2,
+                    "paddingLeft" : 10,
+                    "paddingRight" : 10,
+                    "paddingTop" : 2,
+                    "textColor" : "#2CBD67",
+                    "widthMode" : "fit-content"
+                  },
+                  "text" : "激活成功",
+                  "type" : "text"
+                }
+              ],
+              "style" : {
+                "marginBottom" : 0,
+                "marginLeft" : 0,
+                "marginRight" : 0,
+                "marginTop" : 11,
+                "spacing" : 12,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            }
+          ],
+          "stateKey" : "pageParams.selectedCardId",
+          "style" : {
+            "backgroundColor" : "#2F80ED",
+            "borderWidth" : 0,
+            "cornerRadius" : 6,
+            "height" : 124,
+            "paddingBottom" : 15,
+            "paddingLeft" : 18,
+            "paddingRight" : 18,
+            "paddingTop" : 17
+          },
+          "type" : "selectableCard",
+          "value" : "etc_1"
+        },
+        {
+          "action" : {
+            "actions" : [
+              {
+                "stateKey" : "pageParams.selectedCardId",
+                "type" : "setState",
+                "value" : "etc_2"
+              },
+              {
+                "stateKey" : "pageParams.isETC1Selected",
+                "type" : "setState",
+                "value" : "false"
+              },
+              {
+                "stateKey" : "pageParams.isETC2Selected",
+                "type" : "setState",
+                "value" : "true"
+              },
+              {
+                "stateKey" : "pageParams.selectedCardNo",
+                "type" : "setState",
+                "value" : "6230 **** **** 9952"
+              },
+              {
+                "stateKey" : "pageParams.selectedPlateNo",
+                "type" : "setState",
+                "value" : "粤B5****8"
+              },
+              {
+                "stateKey" : "pageParams.selectedActivationDate",
+                "type" : "setState",
+                "value" : "2025年11月26日"
+              }
+            ],
+            "type" : "sequence"
+          },
+          "children" : [
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 19,
+                    "textColor" : "#FFFFFF"
+                  },
+                  "text" : "6230 **** **** 9952",
+                  "type" : "text"
+                },
+                {
+                  "iconName" : "checkmark.circle.fill",
+                  "style" : {
+                    "fontSize" : 28,
+                    "height" : 28,
+                    "textColor" : "#FFFFFF",
+                    "width" : 28
+                  },
+                  "type" : "icon",
+                  "visible" : "{{pageParams.isETC2Selected}}"
+                },
+                {
+                  "iconName" : "circle",
+                  "style" : {
+                    "fontSize" : 28,
+                    "height" : 28,
+                    "textColor" : "#FFFFFF",
+                    "width" : 28
+                  },
+                  "type" : "icon",
+                  "visible" : "{{pageParams.isETC1Selected}}"
+                }
+              ],
+              "style" : {
+                "spacing" : 10,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            },
+            {
+              "style" : {
+                "fontSize" : 14,
+                "marginBottom" : 0,
+                "marginLeft" : 0,
+                "marginRight" : 0,
+                "marginTop" : 11,
+                "textColor" : "#DCEBFF"
+              },
+              "text" : "粤B5****8",
+              "type" : "text"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 14,
+                    "textColor" : "#DCEBFF",
+                    "widthMode" : "fit-content"
+                  },
+                  "text" : "2025年11月26日",
+                  "type" : "text"
+                },
+                {
+                  "style" : {
+                    "backgroundColor" : "#E8FFF1",
+                    "cornerRadius" : 3,
+                    "fontSize" : 11,
+                    "paddingBottom" : 2,
+                    "paddingLeft" : 10,
+                    "paddingRight" : 10,
+                    "paddingTop" : 2,
+                    "textColor" : "#2CBD67",
+                    "widthMode" : "fit-content"
+                  },
+                  "text" : "激活成功",
+                  "type" : "text"
+                }
+              ],
+              "style" : {
+                "marginBottom" : 0,
+                "marginLeft" : 0,
+                "marginRight" : 0,
+                "marginTop" : 11,
+                "spacing" : 12,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            }
+          ],
+          "stateKey" : "pageParams.selectedCardId",
+          "style" : {
+            "backgroundColor" : "#2879DE",
+            "borderWidth" : 0,
+            "cornerRadius" : 6,
+            "height" : 124,
+            "paddingBottom" : 15,
+            "paddingLeft" : 18,
+            "paddingRight" : 18,
+            "paddingTop" : 17
+          },
+          "type" : "selectableCard",
+          "value" : "etc_2"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "cornerRadius" : 8,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 10,
+        "paddingBottom" : 8,
+        "paddingLeft" : 8,
+        "paddingRight" : 8,
+        "paddingTop" : 8,
+        "spacing" : 8
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+        {
+          "iconName" : "questionmark.circle.fill",
+          "style" : {
+            "fontSize" : 16,
+            "height" : 16,
+            "textColor" : "#666666",
+            "width" : 16
+          },
+          "type" : "icon"
+        },
+        {
+          "style" : {
+            "fontSize" : 13,
+            "textColor" : "#333333"
+          },
+          "text" : "卡不在列表？",
+          "type" : "text"
+        }
+      ],
+      "style" : {
+        "marginBottom" : 0,
+        "marginLeft" : 24,
+        "marginRight" : 24,
+        "marginTop" : 16,
+        "spacing" : 8,
+        "stackAlignment" : "center"
+      },
+      "type" : "row"
+    },
+    {
+      "action" : {
+        "target" : "etc_verification",
+        "type" : "navigate"
+      },
+      "children" : [
+        {
+          "style" : {
+            "fontSize" : 14,
+            "textColor" : "#333333"
+          },
+          "text" : "手动输入车牌号绑定",
+          "type" : "text"
+        },
+        {
+          "iconName" : "chevron.right",
+          "style" : {
+            "fontSize" : 18,
+            "height" : 18,
+            "textColor" : "#333333",
+            "width" : 18
+          },
+          "type" : "icon"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "cornerRadius" : 6,
+        "height" : 58,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 12,
+        "paddingBottom" : 0,
+        "paddingLeft" : 16,
+        "paddingRight" : 16,
+        "paddingTop" : 0,
+        "spacing" : 10,
+        "stackAlignment" : "center"
+      },
+      "type" : "row"
+    }
+  ],
+  "fixedBottomComponents" : [
+    {
+      "children" : [
+        {
+          "action" : {
+            "params" : {
+              "activationDate" : "{{pageParams.selectedActivationDate}}",
+              "cardNo" : "{{pageParams.selectedCardNo}}",
+              "modal_bottomSpacing" : 10,
+              "modal_height" : 300,
+              "modal_topRadius" : 20,
+              "modal_width" : "{{UIConfigure.width-20}}",
+              "plateNo" : "{{pageParams.selectedPlateNo}}"
+            },
+            "target" : "confirm_bind_card_modal_v2_compact",
+            "type" : "showModal"
+          },
+          "style" : {
+            "backgroundColor" : "#43A86B",
+            "cornerRadius" : 24,
+            "fontSize" : 15,
+            "fontWeight" : "medium",
+            "height" : 48,
+            "textColor" : "#FFFFFF"
+          },
+          "text" : "确认绑定",
+          "type" : "button"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "paddingBottom" : 12,
+        "paddingLeft" : 16,
+        "paddingRight" : 16,
+        "paddingTop" : 10
+      },
+      "type" : "card"
+    }
+  ],
+  "navigationBar" : {
+    "backButton" : {
+      "iconName" : "chevron.backward",
+      "id" : "back_btn"
+    },
+    "backgroundColor" : "#43A86B",
+    "hidden" : false,
+    "hideBackButton" : false,
+    "rightButtons" : [
+      {
+        "action" : {
+          "target" : "CustomerService",
+          "type" : "navigate"
+        },
+        "iconName" : "headphones",
+        "id" : "customer_service_btn",
+        "text" : "客服"
+      }
+    ],
+    "textColor" : "#fff"
+  },
+  "pageId" : "etc_binding_demo",
+  "pageParams" : {
+    "isETC1Selected" : "true",
+    "isETC2Selected" : "false",
+    "selectedActivationDate" : "2025年11月26日",
+    "selectedCardId" : "etc_1",
+    "selectedCardNo" : "6230 **** **** 8821",
+    "selectedPlateNo" : "京A1****6"
+  },
+  "pageTitle" : "绑定ETC卡",
+  "schemaVersion" : "1.0"
+}

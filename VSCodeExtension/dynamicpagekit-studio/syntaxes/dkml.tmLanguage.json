@@ -1,0 +1,27 @@
+{
+  "scopeName": "source.dkml",
+  "patterns": [
+    {
+      "name": "comment.block.dkml",
+      "begin": "<!--",
+      "end": "-->"
+    },
+    {
+      "name": "entity.name.tag.dkml",
+      "match": "</?\\b(page|view|text|image|button|card|row|column|icon|space|selectable-card)\\b"
+    },
+    {
+      "name": "entity.other.attribute-name.dkml",
+      "match": "\\b(class|bindtap|dk:if|dk:for|dk:key|slot|src|placeholder|name|state-key|value|data-[A-Za-z0-9_-]+)\\b"
+    },
+    {
+      "name": "string.quoted.double.dkml",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "variable.other.template.dkml",
+      "match": "\\{\\{[^}]+\\}\\}"
+    }
+  ]
+}

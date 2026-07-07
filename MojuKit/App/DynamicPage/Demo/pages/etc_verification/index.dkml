@@ -1,0 +1,45 @@
+<page class="page">
+  <view class="component-0">
+  <text class="component-1">✅  验证码已发送至 {{pageParams.phoneMasked}}，请在5分钟内
+      完成验证</text>
+  </view>
+  <view class="component-2">
+  <text class="component-3">输入验证码</text>
+  <row class="component-4">
+  <view class="component-5">
+  <text class="component-6">3</text>
+  </view>
+  <view class="component-7">
+  <text class="component-8">A</text>
+  </view>
+  <view class="component-9">
+  <text class="component-10">1</text>
+  </view>
+  <view class="component-11">
+  <text class="component-12">2</text>
+  </view>
+  <view class="component-13"></view>
+  <view class="component-14"></view>
+  </row>
+  <input class="component-15" state-key="verificationCode" placeholder="点击输入完整验证码" value="3A12" keyboard-type="ascii" max-length="6" />
+  <row class="component-16">
+  <text class="component-17">未收到?</text>
+  <text class="component-18" bindtap="onTap_sms_resend_countdown_button">重新发送（{{pageParams.countdown}}）</text>
+  </row>
+  </view>
+  <text class="component-19">待绑定ETC卡</text>
+  <view class="component-20">
+  <row class="component-21">
+  <text class="component-22">卡号</text>
+  <text class="component-23">{{pageParams.cardNo}}</text>
+  </row>
+  <row class="component-24">
+  <text class="component-25">车牌</text>
+  <text class="component-26">{{pageParams.plateNo}}</text>
+  </row>
+  </view>
+  <view class="component-27"></view>
+  <view class="component-28" slot="fixedBottom">
+  <button class="component-29" bindtap="onTap_confirm_etc_binding_button">确认绑定</button>
+  </view>
+</page>

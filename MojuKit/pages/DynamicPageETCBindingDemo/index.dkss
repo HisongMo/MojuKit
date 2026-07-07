@@ -1,0 +1,188 @@
+.component-0 {
+  height: 76;
+  padding: 26 14 0 14;
+  background-color: #43A86B;
+  stack-alignment: center;
+  spacing: 12;
+}
+
+.component-0 {
+  width: 24;
+  height: 24;
+  text-color: #FFFFFF;
+}
+
+.component-1 {
+  text-color: #FFFFFF;
+  font-size: 16;
+  alignment: center;
+}
+
+.component-1 {
+  margin: 10 30 0 30;
+  padding: 8 12 8 12;
+  background-color: #DDFBE8;
+  corner-radius: 4;
+  stack-alignment: center;
+  spacing: 8;
+}
+
+.component-100 {
+  width: 16;
+  height: 16;
+  text-color: #31C76A;
+}
+
+.component-101 {
+  text-color: #37A665;
+  font-size: 12;
+  number-of-lines: 0;
+}
+
+.component-2 {
+  margin: 16 38 0 38;
+  text-color: #666666;
+  font-size: 12;
+}
+
+.component-3 {
+  margin: 10 30 0 30;
+  padding: 14 8 14 8;
+  background-color: #FFFFFF;
+  corner-radius: 8;
+  spacing: 10;
+}
+
+.component-300 {
+  padding: 18 20 16 20;
+  background-color: #2F80ED;
+  corner-radius: 6;
+  border-width: 0;
+}
+
+.component-30000 {
+  stack-alignment: center;
+  spacing: 10;
+}
+
+.component-3000000 {
+  text-color: #FFFFFF;
+  font-size: 18;
+}
+
+.component-3000001 {
+  width: 24;
+  height: 24;
+  text-color: #FFFFFF;
+}
+
+.component-30001 {
+  margin: 12 0 0 0;
+  text-color: #DCEBFF;
+  font-size: 13;
+}
+
+.component-30002 {
+  margin: 12 0 0 0;
+  stack-alignment: center;
+  spacing: 10;
+}
+
+.component-3000200 {
+  text-color: #DCEBFF;
+  font-size: 12;
+}
+
+.component-3000201 {
+  padding: 2 8 2 8;
+  background-color: #E8FFF1;
+  text-color: #2CBD67;
+  font-size: 11;
+  corner-radius: 3;
+}
+
+.component-301 {
+  padding: 18 20 16 20;
+  background-color: #2879DE;
+  corner-radius: 6;
+  border-width: 0;
+}
+
+.component-30100 {
+  stack-alignment: center;
+  spacing: 10;
+}
+
+.component-3010000 {
+  text-color: #FFFFFF;
+  font-size: 18;
+}
+
+.component-3010001 {
+  width: 24;
+  height: 24;
+  text-color: #FFFFFF;
+}
+
+.component-30101 {
+  margin: 12 0 0 0;
+  text-color: #DCEBFF;
+  font-size: 13;
+}
+
+.component-30102 {
+  margin: 12 0 0 0;
+  stack-alignment: center;
+  spacing: 10;
+}
+
+.component-3010200 {
+  text-color: #DCEBFF;
+  font-size: 12;
+}
+
+.component-3010201 {
+  padding: 2 8 2 8;
+  background-color: #E8FFF1;
+  text-color: #2CBD67;
+  font-size: 11;
+  corner-radius: 3;
+}
+
+.component-4 {
+  margin: 18 44 0 44;
+  stack-alignment: center;
+  spacing: 8;
+}
+
+.component-400 {
+  width: 14;
+  height: 14;
+  text-color: #666666;
+}
+
+.component-401 {
+  text-color: #333333;
+  font-size: 12;
+}
+
+.component-5 {
+  height: 54;
+  margin: 18 30 0 30;
+  padding: 0 18 0 18;
+  background-color: #FFFFFF;
+  corner-radius: 6;
+  stack-alignment: center;
+  spacing: 10;
+}
+
+.component-500 {
+  text-color: #333333;
+  font-size: 14;
+}
+
+.component-501 {
+  width: 16;
+  height: 16;
+  text-color: #333333;
+}

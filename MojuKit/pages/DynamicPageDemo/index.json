@@ -1,0 +1,20 @@
+{
+  "backgroundColor" : "#F7F8FA",
+  "onLoad" : [
+    {
+      "apiKey" : "vipInfo",
+      "id" : "load_vip_info",
+      "params" : {
+        "source" : "{{pageParams.source}}"
+      },
+      "responseKey" : "vipData",
+      "showLoading" : true
+    }
+  ],
+  "pageId" : "vip_center",
+  "pageParams" : {
+    "source" : "home"
+  },
+  "pageTitle" : "会员中心",
+  "schemaVersion" : "1.0"
+}

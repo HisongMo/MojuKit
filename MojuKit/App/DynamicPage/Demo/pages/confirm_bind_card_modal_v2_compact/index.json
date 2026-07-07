@@ -1,0 +1,9 @@
+{
+  "backgroundColor" : "#FFFFFF",
+  "navigationBar" : {
+    "hidden" : true
+  },
+  "pageId" : "confirm_bind_card_modal",
+  "pageTitle" : "",
+  "schemaVersion" : "1.0.0"
+}

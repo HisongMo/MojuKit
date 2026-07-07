@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "1.0",
+  "pageId": "navigation_list_demo",
+  "pageTitle": "跳转示例",
+  "backgroundColor": "#F4F6F8",
+  "pageParams": {
+    "source": "navigation_demo"
+  },
+  "components": [
+    {
+      "id": "title",
+      "type": "text",
+      "text": "动态页 A",
+      "style": {
+        "fontSize": 26,
+        "fontWeight": "bold",
+        "textColor": "#111827",
+        "alignment": "center",
+        "marginTop": 36,
+        "marginLeft": 20,
+        "marginRight": 20
+      }
+    },
+    {
+      "id": "desc",
+      "type": "text",
+      "text": "点击下面的卡片，JSON 会发出 navigate 动作；原生路由会加载另一个 JSON，并 push 一个新的 DynamicPageViewController。",
+      "style": {
+        "fontSize": 15,
+        "textColor": "#6B7280",
+        "alignment": "center",
+        "numberOfLines": 0,
+        "marginTop": 10,
+        "marginLeft": 28,
+        "marginRight": 28
+      }
+    },
+    {
+      "id": "item_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 14,
+        "borderWidth": 1,
+        "borderColor": "#E5E7EB",
+        "marginTop": 24,
+        "marginLeft": 18,
+        "marginRight": 18,
+        "paddingTop": 18,
+        "paddingBottom": 18,
+        "paddingLeft": 18,
+        "paddingRight": 18,
+        "spacing": 10
+      },
+      "action": {
+        "type": "navigate",
+        "target": "navigationDetail",
+        "params": {
+          "itemId": "item_10001",
+          "itemTitle": "ETC 卡详情",
+          "source": "{{pageParams.source}}"
+        }
+      },
+      "children": [
+        {
+          "id": "item_row",
+          "type": "row",
+          "style": {
+            "spacing": 12,
+            "stackAlignment": "center"
+          },
+          "children": [
+            {
+              "id": "item_icon",
+              "type": "icon",
+              "iconName": "creditcard.fill",
+              "style": {
+                "width": 28,
+                "height": 28,
+                "textColor": "#2F80ED"
+              }
+            },
+            {
+              "id": "item_title",
+              "type": "text",
+              "text": "ETC 卡详情",
+              "style": {
+                "fontSize": 18,
+                "fontWeight": "semibold",
+                "textColor": "#111827"
+              }
+            },
+            {
+              "id": "arrow",
+              "type": "icon",
+              "iconName": "chevron.right",
+              "style": {
+                "width": 16,
+                "height": 16,
+                "textColor": "#9CA3AF"
+              }
+            }
+          ]
+        },
+        {
+          "id": "item_subtitle",
+          "type": "text",
+          "text": "传参：itemId=item_10001，source={{pageParams.source}}",
+          "style": {
+            "fontSize": 13,
+            "textColor": "#6B7280",
+            "numberOfLines": 0,
+            "marginTop": 10
+          }
+        }
+      ]
+    }
+  ]
+}

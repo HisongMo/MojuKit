@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>zh_CN</string>
+	<key>CFBundleDisplayName</key>
+	<string>DynamicPageKit Studio</string>
+	<key>CFBundleExecutable</key>
+	<string>DynamicPageKitStudio</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.dynamicpagekit.studio</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>DynamicPageKit Studio</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>13.0</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>DynamicPageKit Studio 需要读取你选择的页面工程文件夹。</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>DynamicPageKit Studio 需要读取和保存你选择的页面工程文件夹。</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2026 DynamicPageKit.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>DynamicPageKit Studio 需要导入你选择的 JSON 文件。</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
+</dict>
+</plist>

@@ -1,0 +1,104 @@
+{
+  "backgroundColor" : "#F7F8FA",
+  "components" : [
+    {
+      "style" : {
+        "fontSize" : 24,
+        "fontWeight" : "bold",
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 24,
+        "textColor" : "#222222"
+      },
+      "text" : "{{vipData.name}}",
+      "type" : "text"
+    },
+    {
+      "imageUrl" : "{{vipData.bannerUrl}}",
+      "style" : {
+        "contentMode" : "aspectFill",
+        "cornerRadius" : 12,
+        "height" : 160,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 12
+      },
+      "type" : "image"
+    },
+    {
+      "children" : [
+        {
+          "style" : {
+            "fontSize" : 14,
+            "textColor" : "#666666"
+          },
+          "text" : "有效期至：{{vipData.expireDate}}",
+          "type" : "text"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "cornerRadius" : 12,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 16,
+        "paddingBottom" : 16,
+        "paddingLeft" : 16,
+        "paddingRight" : 16,
+        "paddingTop" : 16
+      },
+      "type" : "card"
+    },
+    {
+      "style" : {
+        "backgroundColor" : "#2F80ED",
+        "cornerRadius" : 12,
+        "fontSize" : 16,
+        "fontWeight" : "medium",
+        "height" : 48,
+        "marginBottom" : 0,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 20,
+        "textColor" : "#FFFFFF"
+      },
+      "text" : "立即开通",
+      "type" : "button"
+    },
+    {
+      "style" : {
+        "backgroundColor" : "#111111",
+        "cornerRadius" : 22,
+        "fontSize" : 15,
+        "height" : 44,
+        "marginBottom" : 222,
+        "marginLeft" : 16,
+        "marginRight" : 16,
+        "marginTop" : 22,
+        "textColor" : "#FFFFFF"
+      },
+      "text" : "打开e高速",
+      "type" : "button"
+    }
+  ],
+  "onLoad" : [
+    {
+      "apiKey" : "vipInfo",
+      "id" : "load_vip_info",
+      "params" : {
+        "source" : "{{pageParams.source}}"
+      },
+      "responseKey" : "vipData",
+      "showLoading" : true
+    }
+  ],
+  "pageId" : "vip_center",
+  "pageParams" : {
+    "source" : "home"
+  },
+  "pageTitle" : "会员中心",
+  "schemaVersion" : "1.0"
+}

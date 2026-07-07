@@ -1,0 +1,218 @@
+.component-0 {
+  margin: 10 12 0 12;
+  padding: 9 14 9 14;
+  background-color: #DDFBE8;
+  corner-radius: 8;
+}
+
+.component-1 {
+  text-color: #37A665;
+  font-size: 13;
+  alignment: left;
+  number-of-lines: 0;
+}
+
+.component-2 {
+  margin: 12 12 0 12;
+  padding: 18 20 18 20;
+  background-color: #FFFFFF;
+  corner-radius: 8;
+  spacing: 14;
+}
+
+.component-3 {
+  text-color: #333333;
+  font-size: 14;
+}
+
+.component-4 {
+  height: 60;
+  stack-alignment: center;
+  distribution: fill;
+  spacing: 9;
+}
+
+.component-5 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 1;
+  border-color: #E5E5E5;
+  stack-alignment: center;
+}
+
+.component-6 {
+  text-color: #333333;
+  font-size: 24;
+  font-weight: medium;
+  alignment: center;
+}
+
+.component-7 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 1;
+  border-color: #E5E5E5;
+  stack-alignment: center;
+}
+
+.component-8 {
+  text-color: #333333;
+  font-size: 24;
+  font-weight: medium;
+  alignment: center;
+}
+
+.component-9 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 1;
+  border-color: #E5E5E5;
+  stack-alignment: center;
+}
+
+.component-10 {
+  text-color: #333333;
+  font-size: 24;
+  font-weight: medium;
+  alignment: center;
+}
+
+.component-11 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 2;
+  border-color: #2F64FF;
+  stack-alignment: center;
+}
+
+.component-12 {
+  text-color: #333333;
+  font-size: 24;
+  font-weight: medium;
+  alignment: center;
+}
+
+.component-13 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 1;
+  border-color: #E5E5E5;
+  stack-alignment: center;
+}
+
+.component-14 {
+  width: 44;
+  height: 60;
+  padding: 14 0 0 0;
+  background-color: #FFFFFF;
+  corner-radius: 3;
+  border-width: 1;
+  border-color: #E5E5E5;
+  stack-alignment: center;
+}
+
+.component-15 {
+  height: 1;
+  margin: 0 0 0 0;
+  background-color: #FFFFFF00;
+  text-color: #FFFFFF00;
+  font-size: 1;
+  corner-radius: 0;
+  border-width: 0;
+  border-color: #FFFFFF00;
+}
+
+.component-16 {
+  margin: 2 0 0 0;
+  stack-alignment: center;
+  spacing: 12;
+}
+
+.component-17 {
+  text-color: #999999;
+  font-size: 14;
+}
+
+.component-18 {
+  text-color: #276BFF;
+  font-size: 14;
+}
+
+.component-19 {
+  margin: 18 24 0 24;
+  text-color: #666666;
+  font-size: 14;
+}
+
+.component-20 {
+  margin: 12 12 0 12;
+  padding: 20 24 20 24;
+  background-color: #FFFFFF;
+  corner-radius: 8;
+  spacing: 18;
+}
+
+.component-21 {
+  stack-alignment: center;
+  spacing: 22;
+}
+
+.component-22 {
+  width: 44;
+  text-color: #999999;
+  font-size: 14;
+}
+
+.component-23 {
+  text-color: #333333;
+  font-size: 15;
+}
+
+.component-24 {
+  stack-alignment: center;
+  spacing: 22;
+}
+
+.component-25 {
+  width: 44;
+  text-color: #999999;
+  font-size: 14;
+}
+
+.component-26 {
+  text-color: #333333;
+  font-size: 15;
+}
+
+.component-27 {
+  height: 28;
+}
+
+.component-28 {
+  padding: 10 20 26 20;
+  background-color: #FFFFFF;
+}
+
+.component-29 {
+  height: 48;
+  background-color: #43A86B;
+  text-color: #FFFFFF;
+  font-size: 16;
+  font-weight: medium;
+  corner-radius: 24;
+}

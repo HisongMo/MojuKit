@@ -1,0 +1,354 @@
+{
+  "backgroundColor" : "#F5F5F5",
+  "components" : [
+    {
+      "style" : {
+        "fontSize" : 18,
+        "height" : 18,
+        "textColor" : "#35B56A",
+        "width" : 18
+      },
+      "text" : "✓ 为您找到 2 张ETC卡，请选择可用的卡进行绑定",
+      "type" : "text"
+    },
+    {
+      "style" : {
+        "fontSize" : 13,
+        "marginBottom" : 8,
+        "marginLeft" : 20,
+        "marginRight" : 20,
+        "marginTop" : 14,
+        "textColor" : "#8C8C8C"
+      },
+      "text" : "选择要绑定的ETC卡",
+      "type" : "text"
+    },
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 18,
+                    "fontWeight" : "medium",
+                    "textColor" : "#FFFFFF"
+                  },
+                  "text" : "6230 **** **** 8821",
+                  "type" : "text"
+                },
+                {
+                  "children" : [
+
+                  ],
+                  "style" : {
+                    "fontSize" : 25,
+                    "textColor" : "#FFFFFF55"
+                  },
+                  "type" : "card"
+                }
+              ],
+              "style" : {
+                "distribution" : "equalSpacing",
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            },
+            {
+              "style" : {
+                "fontSize" : 14,
+                "textColor" : "#BFD8FF"
+              },
+              "text" : "京A1****6",
+              "type" : "text"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 14,
+                    "textColor" : "#BFD8FF"
+                  },
+                  "text" : "2025年11月26日",
+                  "type" : "text"
+                },
+                {
+                  "children" : [
+                    {
+                      "style" : {
+                        "fontSize" : 11,
+                        "textColor" : "#35B56A"
+                      },
+                      "text" : "激活成功",
+                      "type" : "text"
+                    }
+                  ],
+                  "style" : {
+                    "backgroundColor" : "#F3FFF6",
+                    "cornerRadius" : 3,
+                    "paddingBottom" : 2,
+                    "paddingLeft" : 8,
+                    "paddingRight" : 8,
+                    "paddingTop" : 2
+                  },
+                  "type" : "card"
+                }
+              ],
+              "style" : {
+                "distribution" : "fill",
+                "spacing" : 12,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            }
+          ],
+          "style" : {
+            "backgroundColor" : "#2F7DE1",
+            "borderColor" : "#2F7DE1",
+            "borderWidth" : 1,
+            "cornerRadius" : 8,
+            "height" : 116,
+            "paddingBottom" : 14,
+            "paddingLeft" : 16,
+            "paddingRight" : 16,
+            "paddingTop" : 16,
+            "spacing" : 8
+          },
+          "type" : "card"
+        },
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 18,
+                    "fontWeight" : "medium",
+                    "textColor" : "#FFFFFF"
+                  },
+                  "text" : "6230 **** **** 8821",
+                  "type" : "text"
+                },
+                {
+                  "children" : [
+
+                  ],
+                  "style" : {
+                    "fontSize" : 25,
+                    "textColor" : "#FFFFFF55"
+                  },
+                  "type" : "card"
+                }
+              ],
+              "style" : {
+                "distribution" : "equalSpacing",
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            },
+            {
+              "style" : {
+                "fontSize" : 14,
+                "textColor" : "#BFD8FF"
+              },
+              "text" : "京A1****6",
+              "type" : "text"
+            },
+            {
+              "children" : [
+                {
+                  "style" : {
+                    "fontSize" : 14,
+                    "textColor" : "#BFD8FF"
+                  },
+                  "text" : "2025年11月26日",
+                  "type" : "text"
+                },
+                {
+                  "children" : [
+                    {
+                      "style" : {
+                        "fontSize" : 11,
+                        "textColor" : "#35B56A"
+                      },
+                      "text" : "激活成功",
+                      "type" : "text"
+                    }
+                  ],
+                  "style" : {
+                    "backgroundColor" : "#F3FFF6",
+                    "cornerRadius" : 3,
+                    "paddingBottom" : 2,
+                    "paddingLeft" : 8,
+                    "paddingRight" : 8,
+                    "paddingTop" : 2
+                  },
+                  "type" : "card"
+                }
+              ],
+              "style" : {
+                "distribution" : "fill",
+                "spacing" : 12,
+                "stackAlignment" : "center"
+              },
+              "type" : "row"
+            }
+          ],
+          "style" : {
+            "backgroundColor" : "#2F7DE1",
+            "borderColor" : "#2F7DE1",
+            "borderWidth" : 1,
+            "cornerRadius" : 8,
+            "height" : 116,
+            "paddingBottom" : 14,
+            "paddingLeft" : 16,
+            "paddingRight" : 16,
+            "paddingTop" : 16,
+            "spacing" : 8
+          },
+          "type" : "card"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "cornerRadius" : 9,
+        "marginBottom" : 0,
+        "marginLeft" : 12,
+        "marginRight" : 12,
+        "marginTop" : 0,
+        "paddingBottom" : 8,
+        "paddingLeft" : 8,
+        "paddingRight" : 8,
+        "paddingTop" : 8,
+        "spacing" : 8
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+        {
+          "children" : [
+
+          ],
+          "style" : {
+            "fontSize" : 18,
+            "textColor" : "#666666"
+          },
+          "type" : "card"
+        },
+        {
+          "style" : {
+            "fontSize" : 13,
+            "textColor" : "#666666"
+          },
+          "text" : "卡不在列表？",
+          "type" : "text"
+        }
+      ],
+      "style" : {
+        "distribution" : "fill",
+        "marginBottom" : 0,
+        "marginLeft" : 22,
+        "marginRight" : 22,
+        "marginTop" : 16,
+        "spacing" : 8,
+        "stackAlignment" : "center"
+      },
+      "type" : "row"
+    },
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "style" : {
+                "fontSize" : 14,
+                "textColor" : "#4A4A4A"
+              },
+              "text" : "手动输入车牌号绑定",
+              "type" : "text"
+            },
+            {
+              "children" : [
+
+              ],
+              "style" : {
+                "fontSize" : 15,
+                "textColor" : "#8C8C8C"
+              },
+              "type" : "card"
+            }
+          ],
+          "style" : {
+            "distribution" : "equalSpacing",
+            "stackAlignment" : "center"
+          },
+          "type" : "row"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "cornerRadius" : 8,
+        "height" : 56,
+        "marginBottom" : 0,
+        "marginLeft" : 12,
+        "marginRight" : 12,
+        "marginTop" : 12,
+        "paddingBottom" : 0,
+        "paddingLeft" : 16,
+        "paddingRight" : 16,
+        "paddingTop" : 0
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+
+      ],
+      "style" : {
+        "height" : 24
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+
+      ],
+      "style" : {
+        "height" : 150
+      },
+      "type" : "card"
+    },
+    {
+      "children" : [
+        {
+          "style" : {
+            "backgroundColor" : "#3EAF70",
+            "cornerRadius" : 22,
+            "fontSize" : 15,
+            "fontWeight" : "medium",
+            "height" : 44,
+            "textColor" : "#FFFFFF"
+          },
+          "text" : "确认绑定",
+          "type" : "button"
+        }
+      ],
+      "style" : {
+        "backgroundColor" : "#FFFFFF",
+        "paddingBottom" : 12,
+        "paddingLeft" : 20,
+        "paddingRight" : 20,
+        "paddingTop" : 8
+      },
+      "type" : "card"
+    }
+  ],
+  "pageId" : "bind_etc_card",
+  "pageParams" : {
+    "selectedCard" : "etc_card_1"
+  },
+  "pageTitle" : "绑定ETC卡",
+  "schemaVersion" : "1.0.0"
+}

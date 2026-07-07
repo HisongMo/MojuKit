@@ -1,0 +1,16 @@
+.vscode/
+**/.vscode/
+**/.swiftpm/
+.DS_Store
+.build/
+**/.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+**/xcuserdata/
+*.xcuserstate
+**/UserInterfaceState.xcuserstate
+StudioApp/Build/
+VSCodeExtension/dynamicpagekit-studio/node_modules/
+VSCodeExtension/dynamicpagekit-studio/out/
+*.vsix

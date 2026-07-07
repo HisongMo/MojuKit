@@ -1,0 +1,92 @@
+.component-0 {
+  margin: 24 20 0 20;
+  text-color: hsl(0, 0%, 13%);
+  font-size: 18;
+  font-weight: medium;
+  alignment: center;
+}
+
+.component-1 {
+  margin: 22 40 0 40;
+  background-color: #FFFFFF;
+  spacing: 14;
+  alignment: center;
+}
+
+.component-2 {
+  stack-alignment: center;
+  spacing: 18;
+}
+
+.titleFont {
+  text-color: #999999;
+  font-size: 16;
+  width: 72;
+}
+
+.contFont {
+  text-color: #333333;
+  font-size: 16;
+}
+
+.component-5 {
+  stack-alignment: center;
+  spacing: 18;
+}
+
+.component-8 {
+  stack-alignment: center;
+  spacing: 18;
+}
+
+.component-11 {
+  margin: 26 10 18 10;
+  spacing: 10;
+}
+
+.halfbtn {
+  width: 180;
+  height: 44;
+  corner-radius: 20;
+  font-size: 16;
+}
+
+.component-12 {
+  background-color: #F1F1F1;
+  text-color: #999999;
+}
+
+.component-13 {
+  background-color: #43A86B;
+  text-color: #FFFFFF;
+  font-weight: medium;
+}
+
+.info-wrap {
+  stack-alignment: center;
+  padding: 24 0 24 0;
+}
+
+.info-table {
+  width: 260;
+  spacing: 12;
+}
+
+.info-row {
+  spacing: 22;
+  alignment: center;
+}
+
+.info-label {
+  width: 72;
+  text-color: #9B9B9B;
+  font-size: 15;
+  alignment: right;
+}
+
+.info-value {
+  width: 160;
+  text-color: #333333;
+  font-size: 15;
+  alignment: left;
+}

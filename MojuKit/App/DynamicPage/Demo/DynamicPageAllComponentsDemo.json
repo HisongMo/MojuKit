@@ -1,0 +1,337 @@
+{
+  "schemaVersion": "1.0",
+  "pageId": "all_components_demo",
+  "pageTitle": "哈哈哈哈太好了",
+  "backgroundColor": "#F4F6F8",
+  "pageParams": {
+    "source": "uploaded_json_demo",
+    "campaign": "all_components"
+  },
+  "onLoad": [
+    {
+      "id": "load_vip_info_for_components",
+      "apiKey": "vipInfo",
+      "params": {
+        "source": "{{pageParams.source}}"
+      },
+      "responseKey": "vipData",
+      "showLoading": true,
+      "loadingText": "加载会员信息"
+    }
+  ],
+  "components": [
+    {
+      "id": "hero_title",
+      "type": "text",
+      "text": "JSON 这个懂得都懂",
+      "style": {
+        "fontSize": 26,
+        "fontWeight": "bold",
+        "textColor": "#111827",
+        "alignment": "center",
+        "marginTop": 28,
+        "marginLeft": 20,
+        "marginRight": 20
+      }
+    },
+    {
+      "id": "hero_subtitle",
+      "type": "text",
+      "text": "当前页面由上传的 JSON 生成，下面展示 text、image、button、space、card 组件。",
+      "style": {
+        "fontSize": 15,
+        "textColor": "#6B7280",
+        "alignment": "center",
+        "numberOfLines": 0,
+        "marginTop": 8,
+        "marginLeft": 28,
+        "marginRight": 28
+      }
+    },
+    {
+      "id": "space_after_intro",
+      "type": "space",
+      "style": {
+        "height": 18
+      }
+    },
+    {
+      "id": "image_section_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 14,
+        "borderWidth": 1,
+        "borderColor": "#E5E7EB",
+        "marginTop": 0,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "paddingTop": 14,
+        "paddingBottom": 14,
+        "paddingLeft": 14,
+        "paddingRight": 14
+      },
+      "children": [
+        {
+          "id": "image_section_title",
+          "type": "text",
+          "text": "图片组件 image",
+          "style": {
+            "fontSize": 18,
+            "fontWeight": "semibold",
+            "textColor": "#111827"
+          }
+        },
+        {
+          "id": "remote_image",
+          "type": "image",
+          "imageUrl": "{{vipData.bannerUrl}}",
+          "style": {
+            "height": 160,
+            "cornerRadius": 12,
+            "contentMode": "aspectFill",
+            "marginTop": 12
+          }
+        },
+        {
+          "id": "image_caption",
+          "type": "text",
+          "text": "图片 URL 来自 onLoad 请求返回：{{vipData.bannerUrl}}",
+          "defaultText": "图片 URL 加载中",
+          "style": {
+            "fontSize": 13,
+            "textColor": "#6B7280",
+            "numberOfLines": 0,
+            "marginTop": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "vip_info_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 14,
+        "borderWidth": 1,
+        "borderColor": "#E5E7EB",
+        "marginTop": 14,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "paddingTop": 16,
+        "paddingBottom": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16
+      },
+      "children": [
+        {
+          "id": "card_section_title",
+          "type": "text",
+          "text": "卡片组件 card + 数据绑定",
+          "style": {
+            "fontSize": 18,
+            "fontWeight": "semibold",
+            "textColor": "#111827"
+          }
+        },
+        {
+          "id": "vip_name",
+          "type": "text",
+          "text": "会员名称：{{vipData.name}}",
+          "defaultText": "会员名称：加载中",
+          "style": {
+            "fontSize": 15,
+            "textColor": "#374151",
+            "marginTop": 12
+          }
+        },
+        {
+          "id": "vip_id",
+          "type": "text",
+          "text": "会员 ID：{{vipData.id}}",
+          "defaultText": "会员 ID：加载中",
+          "style": {
+            "fontSize": 15,
+            "textColor": "#374151",
+            "marginTop": 8
+          }
+        },
+        {
+          "id": "vip_expire",
+          "type": "text",
+          "text": "有效期至：{{vipData.expireDate}}",
+          "defaultText": "有效期：加载中",
+          "style": {
+            "fontSize": 15,
+            "textColor": "#374151",
+            "marginTop": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": "button_section_card",
+      "type": "card",
+      "style": {
+        "backgroundColor": "#FFFFFF",
+        "cornerRadius": 14,
+        "borderWidth": 1,
+        "borderColor": "#E5E7EB",
+        "marginTop": 14,
+        "marginLeft": 16,
+        "marginRight": 16,
+        "paddingTop": 16,
+        "paddingBottom": 16,
+        "paddingLeft": 16,
+        "paddingRight": 16
+      },
+      "children": [
+        {
+          "id": "button_section_title",
+          "type": "text",
+          "text": "按钮组件 button + 动作",
+          "style": {
+            "fontSize": 18,
+            "fontWeight": "semibold",
+            "textColor": "#111827"
+          }
+        },
+        {
+          "id": "toast_button",
+          "type": "button",
+          "text": "显示 Toast",
+          "style": {
+            "height": 46,
+            "backgroundColor": "#10B981",
+            "textColor": "#FFFFFF",
+            "fontSize": 15,
+            "fontWeight": "medium",
+            "cornerRadius": 10,
+            "marginTop": 14
+          },
+          "action": {
+            "type": "toast",
+            "message": "这是 JSON 配置触发的 Toast"
+          }
+        },
+        {
+          "id": "request_button",
+          "type": "button",
+          "text": "发起 openVip 请求",
+          "style": {
+            "height": 46,
+            "backgroundColor": "#2F80ED",
+            "textColor": "#FFFFFF",
+            "fontSize": 15,
+            "fontWeight": "medium",
+            "cornerRadius": 10,
+            "marginTop": 10
+          },
+          "action": {
+            "type": "request",
+            "request": {
+              "id": "open_vip_from_all_components",
+              "apiKey": "openVip",
+              "params": {
+                "productId": "10001",
+                "vipId": "{{vipData.id}}",
+                "source": "{{pageParams.source}}"
+              },
+              "responseKey": "openVipResult",
+              "loadingText": "提交中",
+              "successAction": {
+                "type": "toast",
+                "message": "请求成功，orderId 已写入 openVipResult"
+              },
+              "failureAction": {
+                "type": "toast",
+                "message": "请求失败"
+              }
+            }
+          }
+        },
+        {
+          "id": "request_result_text",
+          "type": "text",
+          "text": "请求结果 orderId：{{openVipResult.orderId}}",
+          "defaultText": "请求结果 orderId：点击按钮后显示",
+          "style": {
+            "fontSize": 14,
+            "textColor": "#6B7280",
+            "marginTop": 10,
+            "numberOfLines": 0
+          }
+        },
+        {
+          "id": "navigate_button",
+          "type": "button",
+          "text": "触发 navigate 回调",
+          "style": {
+            "height": 46,
+            "backgroundColor": "#111827",
+            "textColor": "#FFFFFF",
+            "fontSize": 15,
+            "fontWeight": "medium",
+            "cornerRadius": 10,
+            "marginTop": 10
+          },
+          "action": {
+            "type": "navigate",
+            "target": "vipDetail",
+            "params": {
+              "vipId": "{{vipData.id}}",
+              "source": "{{pageParams.source}}"
+            }
+          }
+        },
+        {
+          "id": "track_button",
+          "type": "button",
+          "text": "触发 track 回调",
+          "style": {
+            "height": 46,
+            "backgroundColor": "#7C3AED",
+            "textColor": "#FFFFFF",
+            "fontSize": 15,
+            "fontWeight": "medium",
+            "cornerRadius": 10,
+            "marginTop": 10
+          },
+          "action": {
+            "type": "track",
+            "trackEvent": "all_components_track_click",
+            "params": {
+              "pageId": "all_components_demo",
+              "vipId": "{{vipData.id}}"
+            }
+          }
+        },
+        {
+          "id": "open_url_button",
+          "type": "button",
+          "text": "安全打开 https 链接",
+          "style": {
+            "height": 46,
+            "backgroundColor": "#F59E0B",
+            "textColor": "#FFFFFF",
+            "fontSize": 15,
+            "fontWeight": "medium",
+            "cornerRadius": 10,
+            "marginTop": 10
+          },
+          "action": {
+            "type": "openUrl",
+            "url": "https://example.com"
+          }
+        }
+      ]
+    },
+    {
+      "id": "footer_space",
+      "type": "space",
+      "style": {
+        "height": 28
+      }
+    }
+  ]
+}

@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A0000012C37100100000001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000022C37100100000001 /* AppDelegate.swift */; };
+		0A0000032C37100100000001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000042C37100100000001 /* SceneDelegate.swift */; };
+		0A0000052C37100100000001 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0000062C37100100000001 /* ViewController.swift */; };
+		0A0000072C37100100000001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0000082C37100100000001 /* Assets.xcassets */; };
+		0B0000012C37100100000001 /* DynamicPage/Model/DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001012C37100100000001 /* DynamicPage/Model/DynamicValue.swift */; };
+		0B0000022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift */; };
+		0B0000032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift */; };
+		0B0000042C37100100000001 /* DynamicPage/Model/DynamicPageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001042C37100100000001 /* DynamicPage/Model/DynamicPageError.swift */; };
+		0B0000052C37100100000001 /* DynamicPage/Model/DynamicSchemaValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001052C37100100000001 /* DynamicPage/Model/DynamicSchemaValidator.swift */; };
+		0B0000062C37100100000001 /* DynamicPage/Data/DynamicDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001062C37100100000001 /* DynamicPage/Data/DynamicDataStore.swift */; };
+		0B0000072C37100100000001 /* DynamicPage/Render/DynamicTemplateResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001072C37100100000001 /* DynamicPage/Render/DynamicTemplateResolver.swift */; };
+		0B0000082C37100100000001 /* DynamicPage/Render/DynamicStyleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001082C37100100000001 /* DynamicPage/Render/DynamicStyleParser.swift */; };
+		0B0000092C37100100000001 /* DynamicPage/Render/DynamicRenderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001092C37100100000001 /* DynamicPage/Render/DynamicRenderContext.swift */; };
+		0B00000A2C37100100000001 /* DynamicPage/Render/DynamicComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010A2C37100100000001 /* DynamicPage/Render/DynamicComponentFactory.swift */; };
+		0B00000B2C37100100000001 /* DynamicPage/Render/DynamicPageRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010B2C37100100000001 /* DynamicPage/Render/DynamicPageRenderer.swift */; };
+		0B00000C2C37100100000001 /* DynamicPage/Network/DynamicNetworkProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010C2C37100100000001 /* DynamicPage/Network/DynamicNetworkProviding.swift */; };
+		0B00000D2C37100100000001 /* DynamicPage/Network/DynamicAPIRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010D2C37100100000001 /* DynamicPage/Network/DynamicAPIRegistry.swift */; };
+		0B00000E2C37100100000001 /* DynamicPage/Network/DynamicNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010E2C37100100000001 /* DynamicPage/Network/DynamicNetworkError.swift */; };
+		0B00000F2C37100100000001 /* DynamicPage/Action/DynamicRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00010F2C37100100000001 /* DynamicPage/Action/DynamicRequestExecutor.swift */; };
+		0B0000102C37100100000001 /* DynamicPage/Action/DynamicActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001102C37100100000001 /* DynamicPage/Action/DynamicActionHandler.swift */; };
+		0B0000112C37100100000001 /* DynamicPage/View/DynamicPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001112C37100100000001 /* DynamicPage/View/DynamicPageViewController.swift */; };
+		0B0000122C37100100000001 /* DynamicPage/Demo/MockDynamicNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001122C37100100000001 /* DynamicPage/Demo/MockDynamicNetworkProvider.swift */; };
+		0B0000132C37100100000001 /* DynamicPage/Demo/DynamicPageDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001132C37100100000001 /* DynamicPage/Demo/DynamicPageDemoViewController.swift */; };
+		0B0000142C37100100000001 /* DynamicPage/Validation/DynamicPageValidationSamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0001142C37100100000001 /* DynamicPage/Validation/DynamicPageValidationSamples.swift */; };
+		0B0000152C37100100000001 /* DynamicPage/Demo/DynamicPageDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0001152C37100100000001 /* DynamicPage/Demo/DynamicPageDemo.json */; };
+		0B0000162C37100100000001 /* DynamicPage/Demo/DynamicPageAllComponentsDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0001162C37100100000001 /* DynamicPage/Demo/DynamicPageAllComponentsDemo.json */; };
+		0B0000172C37100100000001 /* DynamicPage/Demo/DynamicPageETCBindingDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0001172C37100100000001 /* DynamicPage/Demo/DynamicPageETCBindingDemo.json */; };
+		0B0000182C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationListDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0001182C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationListDemo.json */; };
+		0B0000192C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationDetailDemo.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0001192C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationDetailDemo.json */; };
+		0B00001A2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00011A2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewClient.swift */; };
+		0B00001B2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00011B2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift */; };
+		0B00001C2C37100100000001 /* DynamicPage/Demo/aaa.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B00011C2C37100100000001 /* DynamicPage/Demo/aaa.json */; };
+		0B00001D2C37100100000001 /* DynamicPage/Demo/NativeTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00011D2C37100100000001 /* DynamicPage/Demo/NativeTestViewController.swift */; };
+		0B00001E2C37100100000001 /* DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B00011E2C37100100000001 /* DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift */; };
+		9B0000112AF2741200000001 /* UIConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000012AF2741200000001 /* UIConfigure.swift */; };
+		9B0000122AF2741200000002 /* UIView+PopUpExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000022AF2741200000002 /* UIView+PopUpExtension.swift */; };
+		9B0000132AF2741200000003 /* PopUpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000032AF2741200000003 /* PopUpWindow.swift */; };
+		9B0000142AF2741200000004 /* PopUpBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000042AF2741200000004 /* PopUpBaseView.swift */; };
+		9B0000152AF2741200000005 /* PopUpAssistant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000052AF2741200000005 /* PopUpAssistant.swift */; };
+		9B0000162AF2741200000006 /* PopUpCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000062AF2741200000006 /* PopUpCustomView.swift */; };
+		9B0000172AF2741200000007 /* DynamicPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0000072AF2741200000007 /* DynamicPopUpView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0A0000022C37100100000001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A0000042C37100100000001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0A0000062C37100100000001 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A0000082C37100100000001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A0000092C37100100000001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A00000A2C37100100000001 /* MojuKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MojuKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B0001012C37100100000001 /* DynamicPage/Model/DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicValue.swift; sourceTree = "<group>"; };
+		0B0001022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicRequestModel.swift; sourceTree = "<group>"; };
+		0B0001032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicPageModel.swift; sourceTree = "<group>"; };
+		0B0001042C37100100000001 /* DynamicPage/Model/DynamicPageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicPageError.swift; sourceTree = "<group>"; };
+		0B0001052C37100100000001 /* DynamicPage/Model/DynamicSchemaValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Model/DynamicSchemaValidator.swift; sourceTree = "<group>"; };
+		0B0001062C37100100000001 /* DynamicPage/Data/DynamicDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Data/DynamicDataStore.swift; sourceTree = "<group>"; };
+		0B0001072C37100100000001 /* DynamicPage/Render/DynamicTemplateResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Render/DynamicTemplateResolver.swift; sourceTree = "<group>"; };
+		0B0001082C37100100000001 /* DynamicPage/Render/DynamicStyleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Render/DynamicStyleParser.swift; sourceTree = "<group>"; };
+		0B0001092C37100100000001 /* DynamicPage/Render/DynamicRenderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Render/DynamicRenderContext.swift; sourceTree = "<group>"; };
+		0B00010A2C37100100000001 /* DynamicPage/Render/DynamicComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Render/DynamicComponentFactory.swift; sourceTree = "<group>"; };
+		0B00010B2C37100100000001 /* DynamicPage/Render/DynamicPageRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Render/DynamicPageRenderer.swift; sourceTree = "<group>"; };
+		0B00010C2C37100100000001 /* DynamicPage/Network/DynamicNetworkProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Network/DynamicNetworkProviding.swift; sourceTree = "<group>"; };
+		0B00010D2C37100100000001 /* DynamicPage/Network/DynamicAPIRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Network/DynamicAPIRegistry.swift; sourceTree = "<group>"; };
+		0B00010E2C37100100000001 /* DynamicPage/Network/DynamicNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Network/DynamicNetworkError.swift; sourceTree = "<group>"; };
+		0B00010F2C37100100000001 /* DynamicPage/Action/DynamicRequestExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Action/DynamicRequestExecutor.swift; sourceTree = "<group>"; };
+		0B0001102C37100100000001 /* DynamicPage/Action/DynamicActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Action/DynamicActionHandler.swift; sourceTree = "<group>"; };
+		0B0001112C37100100000001 /* DynamicPage/View/DynamicPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/View/DynamicPageViewController.swift; sourceTree = "<group>"; };
+		0B0001122C37100100000001 /* DynamicPage/Demo/MockDynamicNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Demo/MockDynamicNetworkProvider.swift; sourceTree = "<group>"; };
+		0B0001132C37100100000001 /* DynamicPage/Demo/DynamicPageDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Demo/DynamicPageDemoViewController.swift; sourceTree = "<group>"; };
+		0B0001142C37100100000001 /* DynamicPage/Validation/DynamicPageValidationSamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Validation/DynamicPageValidationSamples.swift; sourceTree = "<group>"; };
+		0B0001152C37100100000001 /* DynamicPage/Demo/DynamicPageDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/DynamicPageDemo.json; sourceTree = "<group>"; };
+		0B0001162C37100100000001 /* DynamicPage/Demo/DynamicPageAllComponentsDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/DynamicPageAllComponentsDemo.json; sourceTree = "<group>"; };
+		0B0001172C37100100000001 /* DynamicPage/Demo/DynamicPageETCBindingDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/DynamicPageETCBindingDemo.json; sourceTree = "<group>"; };
+		0B0001182C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationListDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/DynamicPageNavigationListDemo.json; sourceTree = "<group>"; };
+		0B0001192C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationDetailDemo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/DynamicPageNavigationDetailDemo.json; sourceTree = "<group>"; };
+		0B00011A2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/PreviewHost/DynamicPagePreviewClient.swift; sourceTree = "<group>"; };
+		0B00011B2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift; sourceTree = "<group>"; };
+		0B00011C2C37100100000001 /* DynamicPage/Demo/aaa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DynamicPage/Demo/aaa.json; sourceTree = "<group>"; };
+		0B00011D2C37100100000001 /* DynamicPage/Demo/NativeTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/Demo/NativeTestViewController.swift; sourceTree = "<group>"; };
+		0B00011E2C37100100000001 /* DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift; sourceTree = "<group>"; };
+		9B0000012AF2741200000001 /* UIConfigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigure.swift; sourceTree = "<group>"; };
+		9B0000022AF2741200000002 /* UIView+PopUpExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+PopUpExtension.swift"; sourceTree = "<group>"; };
+		9B0000032AF2741200000003 /* PopUpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpWindow.swift; sourceTree = "<group>"; };
+		9B0000042AF2741200000004 /* PopUpBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBaseView.swift; sourceTree = "<group>"; };
+		9B0000052AF2741200000005 /* PopUpAssistant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAssistant.swift; sourceTree = "<group>"; };
+		9B0000062AF2741200000006 /* PopUpCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCustomView.swift; sourceTree = "<group>"; };
+		9B0000072AF2741200000007 /* DynamicPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicPopUpView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A00000B2C37100100000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A00000C2C37100100000001 = {
+			isa = PBXGroup;
+			children = (
+				0A00000D2C37100100000001 /* App */,
+				0A00000E2C37100100000001 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0A00000D2C37100100000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				9B0000002AF2741200000000 /* PopUpAssistant */,
+				0A0000022C37100100000001 /* AppDelegate.swift */,
+				0A0000042C37100100000001 /* SceneDelegate.swift */,
+				0A0000062C37100100000001 /* ViewController.swift */,
+				0B0001012C37100100000001 /* DynamicPage/Model/DynamicValue.swift */,
+				0B0001022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift */,
+				0B0001032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift */,
+				0B0001042C37100100000001 /* DynamicPage/Model/DynamicPageError.swift */,
+				0B0001052C37100100000001 /* DynamicPage/Model/DynamicSchemaValidator.swift */,
+				0B0001062C37100100000001 /* DynamicPage/Data/DynamicDataStore.swift */,
+				0B0001072C37100100000001 /* DynamicPage/Render/DynamicTemplateResolver.swift */,
+				0B0001082C37100100000001 /* DynamicPage/Render/DynamicStyleParser.swift */,
+				0B0001092C37100100000001 /* DynamicPage/Render/DynamicRenderContext.swift */,
+				0B00010A2C37100100000001 /* DynamicPage/Render/DynamicComponentFactory.swift */,
+				0B00010B2C37100100000001 /* DynamicPage/Render/DynamicPageRenderer.swift */,
+				0B00010C2C37100100000001 /* DynamicPage/Network/DynamicNetworkProviding.swift */,
+				0B00010D2C37100100000001 /* DynamicPage/Network/DynamicAPIRegistry.swift */,
+				0B00010E2C37100100000001 /* DynamicPage/Network/DynamicNetworkError.swift */,
+				0B00010F2C37100100000001 /* DynamicPage/Action/DynamicRequestExecutor.swift */,
+				0B0001102C37100100000001 /* DynamicPage/Action/DynamicActionHandler.swift */,
+				0B0001112C37100100000001 /* DynamicPage/View/DynamicPageViewController.swift */,
+				0B0001122C37100100000001 /* DynamicPage/Demo/MockDynamicNetworkProvider.swift */,
+				0B0001132C37100100000001 /* DynamicPage/Demo/DynamicPageDemoViewController.swift */,
+				0B00011D2C37100100000001 /* DynamicPage/Demo/NativeTestViewController.swift */,
+				0B00011A2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewClient.swift */,
+				0B00011B2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift */,
+				0B00011E2C37100100000001 /* DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift */,
+				0B0001142C37100100000001 /* DynamicPage/Validation/DynamicPageValidationSamples.swift */,
+				0B0001152C37100100000001 /* DynamicPage/Demo/DynamicPageDemo.json */,
+				0B0001162C37100100000001 /* DynamicPage/Demo/DynamicPageAllComponentsDemo.json */,
+				0B0001172C37100100000001 /* DynamicPage/Demo/DynamicPageETCBindingDemo.json */,
+				0B0001182C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationListDemo.json */,
+				0B0001192C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationDetailDemo.json */,
+				0B00011C2C37100100000001 /* DynamicPage/Demo/aaa.json */,
+				0A0000082C37100100000001 /* Assets.xcassets */,
+				0A0000092C37100100000001 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		0A00000E2C37100100000001 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A00000A2C37100100000001 /* MojuKit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9B0000002AF2741200000000 /* PopUpAssistant */ = {
+			isa = PBXGroup;
+			children = (
+				9B0000012AF2741200000001 /* UIConfigure.swift */,
+				9B0000022AF2741200000002 /* UIView+PopUpExtension.swift */,
+				9B0000032AF2741200000003 /* PopUpWindow.swift */,
+				9B0000042AF2741200000004 /* PopUpBaseView.swift */,
+				9B0000052AF2741200000005 /* PopUpAssistant.swift */,
+				9B0000062AF2741200000006 /* PopUpCustomView.swift */,
+				9B0000072AF2741200000007 /* DynamicPopUpView.swift */,
+			);
+			path = PopUpAssistant;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A00000F2C37100100000001 /* MojuKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKit" */;
+			buildPhases = (
+				0A0000112C37100100000001 /* Sources */,
+				0A00000B2C37100100000001 /* Frameworks */,
+				0A0000122C37100100000001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MojuKit;
+			productName = MojuKit;
+			productReference = 0A00000A2C37100100000001 /* MojuKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A0000132C37100100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					0A00000F2C37100100000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = 0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKit" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A00000C2C37100100000001;
+			productRefGroup = 0A00000E2C37100100000001 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A00000F2C37100100000001 /* MojuKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A0000122C37100100000001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A0000072C37100100000001 /* Assets.xcassets in Resources */,
+				0B0000152C37100100000001 /* DynamicPage/Demo/DynamicPageDemo.json in Resources */,
+				0B0000162C37100100000001 /* DynamicPage/Demo/DynamicPageAllComponentsDemo.json in Resources */,
+				0B0000172C37100100000001 /* DynamicPage/Demo/DynamicPageETCBindingDemo.json in Resources */,
+				0B0000182C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationListDemo.json in Resources */,
+				0B0000192C37100100000001 /* DynamicPage/Demo/DynamicPageNavigationDetailDemo.json in Resources */,
+				0B00001C2C37100100000001 /* DynamicPage/Demo/aaa.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A0000112C37100100000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0000112AF2741200000001 /* UIConfigure.swift in Sources */,
+				9B0000122AF2741200000002 /* UIView+PopUpExtension.swift in Sources */,
+				9B0000132AF2741200000003 /* PopUpWindow.swift in Sources */,
+				9B0000142AF2741200000004 /* PopUpBaseView.swift in Sources */,
+				9B0000152AF2741200000005 /* PopUpAssistant.swift in Sources */,
+				9B0000162AF2741200000006 /* PopUpCustomView.swift in Sources */,
+				9B0000172AF2741200000007 /* DynamicPopUpView.swift in Sources */,
+				0A0000012C37100100000001 /* AppDelegate.swift in Sources */,
+				0A0000032C37100100000001 /* SceneDelegate.swift in Sources */,
+				0A0000052C37100100000001 /* ViewController.swift in Sources */,
+				0B0000012C37100100000001 /* DynamicPage/Model/DynamicValue.swift in Sources */,
+				0B0000022C37100100000001 /* DynamicPage/Model/DynamicRequestModel.swift in Sources */,
+				0B0000032C37100100000001 /* DynamicPage/Model/DynamicPageModel.swift in Sources */,
+				0B0000042C37100100000001 /* DynamicPage/Model/DynamicPageError.swift in Sources */,
+				0B0000052C37100100000001 /* DynamicPage/Model/DynamicSchemaValidator.swift in Sources */,
+				0B0000062C37100100000001 /* DynamicPage/Data/DynamicDataStore.swift in Sources */,
+				0B0000072C37100100000001 /* DynamicPage/Render/DynamicTemplateResolver.swift in Sources */,
+				0B0000082C37100100000001 /* DynamicPage/Render/DynamicStyleParser.swift in Sources */,
+				0B0000092C37100100000001 /* DynamicPage/Render/DynamicRenderContext.swift in Sources */,
+				0B00000A2C37100100000001 /* DynamicPage/Render/DynamicComponentFactory.swift in Sources */,
+				0B00000B2C37100100000001 /* DynamicPage/Render/DynamicPageRenderer.swift in Sources */,
+				0B00000C2C37100100000001 /* DynamicPage/Network/DynamicNetworkProviding.swift in Sources */,
+				0B00000D2C37100100000001 /* DynamicPage/Network/DynamicAPIRegistry.swift in Sources */,
+				0B00000E2C37100100000001 /* DynamicPage/Network/DynamicNetworkError.swift in Sources */,
+				0B00000F2C37100100000001 /* DynamicPage/Action/DynamicRequestExecutor.swift in Sources */,
+				0B0000102C37100100000001 /* DynamicPage/Action/DynamicActionHandler.swift in Sources */,
+				0B0000112C37100100000001 /* DynamicPage/View/DynamicPageViewController.swift in Sources */,
+				0B0000122C37100100000001 /* DynamicPage/Demo/MockDynamicNetworkProvider.swift in Sources */,
+				0B0000132C37100100000001 /* DynamicPage/Demo/DynamicPageDemoViewController.swift in Sources */,
+				0B00001D2C37100100000001 /* DynamicPage/Demo/NativeTestViewController.swift in Sources */,
+				0B00001A2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewClient.swift in Sources */,
+				0B00001B2C37100100000001 /* DynamicPage/PreviewHost/DynamicPagePreviewHostViewController.swift in Sources */,
+				0B00001E2C37100100000001 /* DynamicPage/PreviewHost/DynamicPageRemoteRetrieveViewController.swift in Sources */,
+				0B0000142C37100100000001 /* DynamicPage/Validation/DynamicPageValidationSamples.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0A0000152C37100100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0A0000162C37100100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0A0000172C37100100000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = VD44955XC4;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0A0000182C37100100000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = VD44955XC4;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.MojuKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A0000102C37100100000001 /* Build configuration list for PBXNativeTarget "MojuKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0000172C37100100000001 /* Debug */,
+				0A0000182C37100100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A0000142C37100100000001 /* Build configuration list for PBXProject "MojuKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A0000152C37100100000001 /* Debug */,
+				0A0000162C37100100000001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A0000132C37100100000001 /* Project object */;
+}

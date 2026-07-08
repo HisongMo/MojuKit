@@ -131,6 +131,60 @@ public struct MojuStyle: Codable {
     public let contentMode: String?
     public let numberOfLines: Int?
     public let hidden: Bool?
+
+    public init(
+        width: CGFloat? = nil,
+        widthMode: String? = nil,
+        height: CGFloat? = nil,
+        marginTop: CGFloat? = nil,
+        marginBottom: CGFloat? = nil,
+        marginLeft: CGFloat? = nil,
+        marginRight: CGFloat? = nil,
+        paddingTop: CGFloat? = nil,
+        paddingBottom: CGFloat? = nil,
+        paddingLeft: CGFloat? = nil,
+        paddingRight: CGFloat? = nil,
+        backgroundColor: String? = nil,
+        textColor: String? = nil,
+        fontSize: CGFloat? = nil,
+        fontWeight: String? = nil,
+        cornerRadius: CGFloat? = nil,
+        borderWidth: CGFloat? = nil,
+        borderColor: String? = nil,
+        alignment: String? = nil,
+        stackAlignment: String? = nil,
+        distribution: String? = nil,
+        spacing: CGFloat? = nil,
+        contentMode: String? = nil,
+        numberOfLines: Int? = nil,
+        hidden: Bool? = nil
+    ) {
+        self.width = width
+        self.widthMode = widthMode
+        self.height = height
+        self.marginTop = marginTop
+        self.marginBottom = marginBottom
+        self.marginLeft = marginLeft
+        self.marginRight = marginRight
+        self.paddingTop = paddingTop
+        self.paddingBottom = paddingBottom
+        self.paddingLeft = paddingLeft
+        self.paddingRight = paddingRight
+        self.backgroundColor = backgroundColor
+        self.textColor = textColor
+        self.fontSize = fontSize
+        self.fontWeight = fontWeight
+        self.cornerRadius = cornerRadius
+        self.borderWidth = borderWidth
+        self.borderColor = borderColor
+        self.alignment = alignment
+        self.stackAlignment = stackAlignment
+        self.distribution = distribution
+        self.spacing = spacing
+        self.contentMode = contentMode
+        self.numberOfLines = numberOfLines
+        self.hidden = hidden
+    }
 }
 
 enum MojuComponentType: String {
@@ -188,6 +242,22 @@ public struct MojuNavigationBarConfig: Codable {
     public let hideBackButton: Bool?
     public let backButton: MojuBarButton?
     public let rightButtons: [MojuBarButton]?
+
+    public init(
+        backgroundColor: String? = nil,
+        textColor: String? = nil,
+        hidden: Bool? = nil,
+        hideBackButton: Bool? = nil,
+        backButton: MojuBarButton? = nil,
+        rightButtons: [MojuBarButton]? = nil
+    ) {
+        self.backgroundColor = backgroundColor
+        self.textColor = textColor
+        self.hidden = hidden
+        self.hideBackButton = hideBackButton
+        self.backButton = backButton
+        self.rightButtons = rightButtons
+    }
 }
 
 public struct MojuBarButton: Codable {
@@ -195,4 +265,16 @@ public struct MojuBarButton: Codable {
     public let iconName: String?
     public let text: String?
     public let action: MojuAction?
+
+    public init(
+        id: String? = nil,
+        iconName: String? = nil,
+        text: String? = nil,
+        action: MojuAction? = nil
+    ) {
+        self.id = id
+        self.iconName = iconName
+        self.text = text
+        self.action = action
+    }
 }

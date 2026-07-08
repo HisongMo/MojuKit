@@ -9,6 +9,26 @@ public struct MojuRequest: Codable {
     public let loadingText: String?
     public let successAction: MojuAction?
     public let failureAction: MojuAction?
+
+    public init(
+        id: String? = nil,
+        apiKey: String,
+        params: [String: MojuValue]? = nil,
+        responseKey: String? = nil,
+        showLoading: Bool? = nil,
+        loadingText: String? = nil,
+        successAction: MojuAction? = nil,
+        failureAction: MojuAction? = nil
+    ) {
+        self.id = id
+        self.apiKey = apiKey
+        self.params = params
+        self.responseKey = responseKey
+        self.showLoading = showLoading
+        self.loadingText = loadingText
+        self.successAction = successAction
+        self.failureAction = failureAction
+    }
 }
 
 public final class MojuAction: Codable {

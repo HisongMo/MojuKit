@@ -5,6 +5,11 @@ public struct MojuDPKManifest: Codable, Equatable {
     public struct Page: Codable, Equatable {
         public let name: String
         public let pageId: String?
+
+        public init(name: String, pageId: String? = nil) {
+            self.name = name
+            self.pageId = pageId
+        }
     }
 
     public let name: String
@@ -12,6 +17,20 @@ public struct MojuDPKManifest: Codable, Equatable {
     public let sourceProject: String?
     public let activePage: String?
     public let pages: [Page]
+
+    public init(
+        name: String,
+        generatedAt: String,
+        sourceProject: String? = nil,
+        activePage: String? = nil,
+        pages: [Page]
+    ) {
+        self.name = name
+        self.generatedAt = generatedAt
+        self.sourceProject = sourceProject
+        self.activePage = activePage
+        self.pages = pages
+    }
 }
 
 public struct MojuDPKPackage: Codable {
@@ -20,6 +39,20 @@ public struct MojuDPKPackage: Codable {
     public let releaseTitle: String
     public let releaseDescription: String
     public let generatedAt: String
+
+    public init(
+        manifest: MojuDPKManifest,
+        pages: [String: MojuPage],
+        releaseTitle: String,
+        releaseDescription: String,
+        generatedAt: String
+    ) {
+        self.manifest = manifest
+        self.pages = pages
+        self.releaseTitle = releaseTitle
+        self.releaseDescription = releaseDescription
+        self.generatedAt = generatedAt
+    }
 
     public var activePage: MojuPage? {
         guard let activePage = manifest.activePage else { return nil }

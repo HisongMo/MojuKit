@@ -28,7 +28,7 @@ struct MojuAPIEndpoint {
 enum MojuAPIRegistry {
     static func endpoint(for apiKey: String) -> MojuAPIEndpoint? {
         guard let key = MojuAPIKey(rawValue: apiKey) else {
-            return MojuAPIEndpoint(path: "", method: .post, requiresLogin: false, riskLevel: .normal)
+            return nil
         }
 
         switch key {

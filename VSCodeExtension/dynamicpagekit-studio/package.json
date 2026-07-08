@@ -23,6 +23,7 @@
       "onCommand:dynamicPageKit.exportJSONPackage",
       "onCommand:dynamicPageKit.packageAndUpload",
       "onCommand:dynamicPageKit.startPreviewService",
+      "onCommand:dynamicPageKit.stopPreviewService",
       "onCommand:dynamicPageKit.startPreview"
     ],
   "main": "./out/extension.js",
@@ -106,6 +107,11 @@
         "command": "dynamicPageKit.startPreviewService",
         "title": "DynamicPageKit: Start Preview Service",
         "icon": "$(radio-tower)"
+      },
+      {
+        "command": "dynamicPageKit.stopPreviewService",
+        "title": "DynamicPageKit: 关闭预览服务",
+        "icon": "$(debug-stop)"
       },
       {
         "command": "dynamicPageKit.startPreview",
@@ -257,14 +263,24 @@
           "group": "navigation@2"
         },
         {
-          "command": "dynamicPageKit.validateActive",
+          "command": "dynamicPageKit.stopPreviewService",
           "when": "view == dynamicPageKit.preview",
           "group": "navigation@3"
         },
         {
-          "command": "dynamicPageKit.packageAndUpload",
+          "command": "dynamicPageKit.validateActive",
           "when": "view == dynamicPageKit.preview",
           "group": "navigation@4"
+        },
+        {
+          "command": "dynamicPageKit.packageAndUpload",
+          "when": "view == dynamicPageKit.preview",
+          "group": "navigation@5"
+        },
+        {
+          "command": "dynamicPageKit.stopPreviewService",
+          "when": "view == dynamicPageKit.pages",
+          "group": "navigation@7"
         }
       ],
       "view/item/context": [

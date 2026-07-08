@@ -563,6 +563,7 @@ final class DynamicPageRemoteRetrieveViewController: UIViewController {
             height: config.height,
             topRadius: config.topRadius,
             bottomRadius: config.bottomRadius,
+            bounces: config.bounces,
             networkProvider: MockDynamicNetworkProvider()
         ) { [weak self, weak vc] target, params in
             self?.handleNavigation(target: target, params: params, from: vc)

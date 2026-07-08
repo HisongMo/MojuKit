@@ -14,7 +14,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "MojuKit"
+            name: "MojuKit",
+            resources: [
+                .process("PrivacyInfo.xcprivacy")
+            ]
         )
     ]
 )

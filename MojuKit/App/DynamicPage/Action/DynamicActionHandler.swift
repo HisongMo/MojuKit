@@ -38,13 +38,15 @@ final class DynamicActionHandler {
 
         case "navigate":
             guard let target = action.target else { return }
+            let resolvedTarget = activeResolver.resolveString(target)
             let params = action.params.map { activeResolver.resolveParams($0) }
-            onNavigate?(target, params)
+            onNavigate?(resolvedTarget, params)
 
         case "nativeNavigate":
             guard let target = action.target else { return }
+            let resolvedTarget = activeResolver.resolveString(target)
             let params = action.params.map { activeResolver.resolveParams($0) }
-            onNativeNavigate?(target, params)
+            onNativeNavigate?(resolvedTarget, params)
 
         case "openUrl":
             guard let rawURL = action.url else { return }
@@ -79,8 +81,9 @@ final class DynamicActionHandler {
 
         case "showModal":
             guard let target = action.target else { return }
+            let resolvedTarget = activeResolver.resolveString(target)
             let params = action.params.map { activeResolver.resolveParams($0) }
-            onShowModal?(target, params)
+            onShowModal?(resolvedTarget, params)
 
         default:
             DynamicPageLogger.debug("unsupported action: \(action.type)")

@@ -152,6 +152,10 @@ final class DynamicComponentFactory {
             textField?.resignFirstResponder()
         }, for: .editingDidEndOnExit)
 
+        textField.addAction(UIAction { _ in
+            context.actionHandler.onStateChanged?()
+        }, for: .editingDidEnd)
+
         return textField
     }
 
@@ -191,6 +195,9 @@ final class DynamicComponentFactory {
                     context.dataStore.set(text, forKey: stateKey)
                 }
                 textView?.invalidateIntrinsicContentSize()
+            },
+            onEndEditing: {
+                context.actionHandler.onStateChanged?()
             }
         )
         textView.delegate = delegate
@@ -609,10 +616,12 @@ private var dynamicTextViewDelegateKey: UInt8 = 0
 private final class DynamicTextViewDelegate: NSObject, UITextViewDelegate {
     private let maxLength: Int?
     private let onChange: (String) -> Void
+    private let onEndEditing: (() -> Void)?
 
-    init(maxLength: Int?, onChange: @escaping (String) -> Void) {
+    init(maxLength: Int?, onChange: @escaping (String) -> Void, onEndEditing: (() -> Void)? = nil) {
         self.maxLength = maxLength
         self.onChange = onChange
+        self.onEndEditing = onEndEditing
     }
 
     func textViewDidChange(_ textView: UITextView) {
@@ -620,6 +629,10 @@ private final class DynamicTextViewDelegate: NSObject, UITextViewDelegate {
             textView.text = String(textView.text.prefix(maxLength))
         }
         onChange(textView.text)
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        onEndEditing?()
     }
 }
 

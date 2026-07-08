@@ -527,6 +527,9 @@
 - `forEach` 提供数组数据
 - `children` 作为每个 cell 的模板
 - 默认按一列纵向重复渲染
+- 每个 cell 内的 `action` 都能直接读取当前循环项的局部变量
+- 如果点击事件需要带上当前行数据，可以在 `action.params` 里写 `{{item.xxx}}`、`{{card.xxx}}` 这类字段
+- 同时可以把 `{{index}}`、`{{cardIndex}}` 一起传给事件，方便业务侧知道是哪一行被点击
 
 示例：
 
@@ -539,6 +542,15 @@
   "children": [
     {
       "type": "row",
+      "action": {
+        "type": "track",
+        "trackEvent": "card_click",
+        "params": {
+          "cardId": "{{card.id}}",
+          "cardTitle": "{{card.title}}",
+          "cardIndex": "{{cardIndex}}"
+        }
+      },
       "children": [
         { "type": "text", "text": "{{cardIndex}}. " },
         { "type": "text", "text": "{{card.title}}" }
@@ -565,6 +577,9 @@
 - `columns` 默认是 `2`
 - 每个 item 都按 `children` 渲染成一个网格 cell
 - 不足列数时会补空白 cell，保持布局整齐
+- 每个网格 cell 的点击事件同样可以读取当前 item 和 index
+- 如果需要把当前卡片的数据传给事件，直接在 `action.params` 里引用当前局部变量即可
+- 业务侧可据此上报埋点、触发跳转或请求接口
 
 示例：
 
@@ -575,8 +590,22 @@
   "forItem": "product",
   "columns": 3,
   "children": [
-    { "type": "image", "imageUrl": "{{product.icon}}" },
-    { "type": "text", "text": "{{product.name}}" }
+    {
+      "type": "card",
+      "action": {
+        "type": "navigate",
+        "target": "productDetail",
+        "params": {
+          "productId": "{{product.id}}",
+          "productName": "{{product.name}}",
+          "productIndex": "{{index}}"
+        }
+      },
+      "children": [
+        { "type": "image", "imageUrl": "{{product.icon}}" },
+        { "type": "text", "text": "{{product.name}}" }
+      ]
+    }
   ]
 }
 ```
@@ -592,6 +621,9 @@
 - 可写在普通组件上，也可写在 `tableView` 和 `collectionView` 上
 - 运行时会把 `item` 和 `index` 注入到局部模板上下文
 - 普通组件的 `forEach` 适合纵向重复单项
+- 循环项内部的 `action`、`request`、`navigate`、`track` 都能继续使用当前局部变量
+- 如果需要把当前项数据传给点击事件，优先在 `action.params` 里显式写出要传的字段
+- `tableView` 和 `collectionView` 只是更强的列表容器，局部变量的使用方式和普通 `forEach` 一致
 
 示例：
 

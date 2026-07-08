@@ -45,6 +45,7 @@ function activate(context) {
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.exportJSONPackage", () => state.exportJSONPackage()));
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.packageAndUpload", () => state.packageAndUpload()));
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.startPreviewService", () => state.startPreviewService()));
+  context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.stopPreviewService", () => state.stopPreviewService()));
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.startPreview", () => state.startPreview()));
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.restartHost", () => state.restartHost()));
   context.subscriptions.push(vscode.commands.registerCommand("dynamicPageKit.refreshPreview", () => state.refreshPreview()));
@@ -681,6 +682,40 @@ class StudioState {
     }
   }
 
+  async stopPreviewService(options = {}) {
+    const server = this.server;
+    if (!server) {
+      this.updateStatus("Preview service stopped");
+      this.previewProvider?.refresh();
+      if (!options.silent) {
+        vscode.window.showInformationMessage("DynamicPageKit preview service is already stopped.");
+      }
+      return;
+    }
+
+    await new Promise(resolve => {
+      if (!server.listening) {
+        resolve();
+        return;
+      }
+      server.close(error => {
+        if (error) {
+          this.lastLog = error.message || String(error);
+        }
+        resolve();
+      });
+    });
+
+    if (this.server === server) {
+      this.server = undefined;
+    }
+    this.updateStatus("Preview service stopped");
+    this.previewProvider?.refresh();
+    if (!options.silent) {
+      vscode.window.showInformationMessage("DynamicPageKit preview service stopped.");
+    }
+  }
+
   async refreshPreview() {
     await this.compileActive();
   }
@@ -978,6 +1013,9 @@ class PreviewViewProvider {
       case "startService":
         await this.state.startPreviewService();
         break;
+      case "stopService":
+        await this.state.stopPreviewService();
+        break;
       case "startPreview":
         await this.state.startPreview();
         break;
@@ -1051,6 +1089,7 @@ class PreviewViewProvider {
   <h3>DynamicPageKit Preview</h3>
   <div class="actions">
     <button id="startService">启动服务</button>
+    <button id="stopService">关闭服务</button>
     <button id="startPreview">启动预览</button>
     <button id="refreshPreview">刷新页面</button>
     <button id="validateActive">校验当前页</button>
@@ -1086,6 +1125,7 @@ class PreviewViewProvider {
     const vscode = acquireVsCodeApi();
     const post = command => vscode.postMessage({ command });
     document.getElementById("startService").addEventListener("click", () => post("startService"));
+    document.getElementById("stopService").addEventListener("click", () => post("stopService"));
     document.getElementById("startPreview").addEventListener("click", () => post("startPreview"));
     document.getElementById("refreshPreview").addEventListener("click", () => post("refreshPreview"));
     document.getElementById("validateActive").addEventListener("click", () => post("validateActive"));

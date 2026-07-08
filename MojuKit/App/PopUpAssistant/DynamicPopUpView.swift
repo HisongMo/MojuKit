@@ -18,6 +18,7 @@ class DynamicPopUpView: PopUpBaseView {
         height: CGFloat,
         topRadius: CGFloat = 16,
         bottomRadius: CGFloat = UIScreen.main.realCornerRadius,
+        bounces: Bool = false,
         networkProvider: DynamicNetworkProviding,
         onNavigate: ((_ target: String, _ params: [String: DynamicValue]?) -> Void)? = nil
     ) {
@@ -29,6 +30,7 @@ class DynamicPopUpView: PopUpBaseView {
         
         // 1. Setup ScrollView and StackView
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.bounces = bounces
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 12
@@ -126,6 +128,7 @@ struct PopUpConfig {
     var height: CGFloat = 500
     var topRadius: CGFloat = 16
     var bottomRadius: CGFloat = UIScreen.main.realCornerRadius
+    var bounces: Bool = false
     
     init(from params: [String: DynamicValue]?) {
         guard let params = params else { return }
@@ -200,6 +203,13 @@ struct PopUpConfig {
                 } else if let parsedRadius = Self.dimensionValue(from: s, base: UIScreen.main.realCornerRadius) {
                     bottomRadius = parsedRadius
                 }
+            }
+        }
+        if let bouncesVal = params["modal_bounces"]?.anyValue {
+            if let b = bouncesVal as? Bool {
+                bounces = b
+            } else if let s = bouncesVal as? String {
+                bounces = (s.lowercased() == "true")
             }
         }
     }

@@ -267,6 +267,7 @@ final class DynamicPageDemoViewController: UIViewController, UIDocumentPickerDel
             height: config.height,
             topRadius: config.topRadius,
             bottomRadius: config.bottomRadius,
+            bounces: config.bounces,
             networkProvider: MockDynamicNetworkProvider()
         ) { [weak self] target, params in
             self?.handleNavigation(target: target, params: params, from: viewController)

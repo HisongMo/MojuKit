@@ -318,9 +318,12 @@ public enum DKPageCompiler {
         case "collectionview", "collection-view":
             return DynamicComponent(type: "collectionView", style: style, action: action, children: children, visible: visible, forEach: forEach, forItem: forItem, forIndex: forIndex, columns: columns)
         case "selectable-card":
+            let selectedClassNames = node.classNames.map { "\($0)-selected" }
+            let selectedStyle = styleSheet.styles(for: selectedClassNames)
             return DynamicComponent(
                 type: "selectableCard",
                 style: style,
+                selectedStyle: selectedStyle,
                 action: action,
                 children: children,
                 visible: visible,
@@ -450,6 +453,8 @@ public enum DKPageCompiler {
             return ""
         case "toast":
             return "dk.toast(\"\(action.message ?? "")\")"
+        case "openUrl":
+            return "dk.openUrl(\"\(action.url ?? "")\")"
         case "track":
             return "dk.track(\"\(action.trackEvent ?? "")\")"
         case "setState":
@@ -938,6 +943,9 @@ public enum DKJSParser {
         if body.contains("dk.back") {
             return DynamicAction(type: "navigate", target: "back")
         }
+        if let url = firstArgument(function: "dk.openUrl", in: body) {
+            return DynamicAction(type: "openUrl", url: url)
+        }
         if let message = firstArgument(function: "dk.toast", in: body) {
             return DynamicAction(type: "toast", message: message)
         }
@@ -1286,19 +1294,22 @@ public enum DKJSParser {
         var depth = 1
         var quote: Character?
         var isEscaping = false
+        var quoteSeen = false
 
         func appendCurrentArgument() {
             let raw = currentRaw.trimmingCharacters(in: .whitespacesAndNewlines)
-            if !raw.isEmpty {
+            if !raw.isEmpty || quoteSeen {
                 args.append(raw)
             }
             currentRaw = ""
+            quoteSeen = false
         }
 
         while cursor < text.endIndex {
             let character = text[cursor]
 
             if let activeQuote = quote {
+                quoteSeen = true
                 if isEscaping {
                     currentRaw.append(character)
                     isEscaping = false
@@ -1311,6 +1322,7 @@ public enum DKJSParser {
                 }
             } else if character == "\"" || character == "'" {
                 quote = character
+                quoteSeen = true
             } else if character == "(" || character == "{" || character == "[" {
                 depth += 1
                 currentRaw.append(character)

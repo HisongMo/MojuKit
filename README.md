@@ -295,11 +295,6 @@ Page({
   <img src="./MojuKit/Docs/assets/simulator-styles-layout.jpg" alt="样式与高级布局演示" width="240" />
 </p>
 
-视频演示：
-
-- [VS Code 插件点击页面，iOS Simulator 自动切换预览](./MojuKit/Docs/assets/videos/plugin-page-switch-demo.mp4)
-- [修改页面 JSON，iOS Simulator 动态热加载](./MojuKit/Docs/assets/videos/plugin-hot-reload-demo.mp4)
-
 ### 演示 1：本地启动 iOS 预览
 
 1. 打开 `MojuKit/MojuKitPreview.xcodeproj`
